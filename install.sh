@@ -3,7 +3,7 @@
 git submodule init
 git submodule update
 
-ln -sf ~/dotfile/vim ~/.vim
-ln -sf ~/dotfile/vimrc ~/.vimrc
-ln -sf ~/dotfile/bashrc ~/.bashrc
-ln -sf ~/dotfile/gitconfig ~/.gitconfig
+ln -sf ~/dotfiles/vim ~/.vim
+ln -sf ~/dotfiles/vimrc ~/.vimrc
+ln -sf ~/dotfiles/bashrc ~/.bashrc
+ln -sf ~/dotfiles/gitconfig ~/.gitconfig

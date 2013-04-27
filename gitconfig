@@ -1,0 +1,14 @@
+[alias]
+	c = commit -m
+	s = status
+	b = branch
+	d = diff
+	co = checkout
+	a = add
+	l = log
+	aa = add .
+[user]
+	name = iTakeshi
+	email = takeshi.ito.doraemon@gmail.com
+[color]
+	ui = true

@@ -26,6 +26,8 @@ set smartindent
 set title
 set mouse=a
 set clipboard=unnamed
+set binary
+set noeol
 
 "Edit Settings
 set tabstop=2

@@ -12,3 +12,5 @@
 	email = takeshi.ito.doraemon@gmail.com
 [color]
 	ui = true
+[push]
+	default = simple

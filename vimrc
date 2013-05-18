@@ -10,6 +10,9 @@ NeoBundle 'vim-scripts/The-NERD-tree'
 nmap <Leader>n :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
+NeoBundle 'tpope/vim-fugitive'
+set statusline+=%{fugitive#statusline()}
+
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'

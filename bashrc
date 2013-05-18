@@ -120,7 +120,7 @@ fi
 
 export EDITOR=/usr/bin/vim
 
-PS1='\[\033[01;32m\]\u\[\033[01;34m\] \w$(__git_ps1) \$\[\033[00m\] '
+PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w$(__git_ps1) \$\[\033[00m\] '
 
 alias be='bundle exec'
 alias off='sudo shutdown -h now'

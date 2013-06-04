@@ -21,7 +21,7 @@ NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'slim-template/vim-slim'
 
-let g:Align_xstrlen = 3
+NeoBundle 'godlygeek/tabular'
 
 "General Settings
 set cindent

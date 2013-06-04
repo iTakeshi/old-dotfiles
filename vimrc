@@ -19,6 +19,7 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'slim-template/vim-slim'
 
 let g:Align_xstrlen = 3
 

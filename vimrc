@@ -20,6 +20,8 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 
+let g:Align_xstrlen = 3
+
 "General Settings
 set cindent
 set cinoptions=g0

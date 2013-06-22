@@ -1,7 +1,7 @@
 [alias]
 	c = commit -m
 	s = status
-	b = branch
+	b = branch -a
 	d = diff
 	co = checkout
 	a = add

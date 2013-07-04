@@ -1,0 +1,4 @@
+! CapsLockを修飾子から外しておく
+remove Lock = Caps_Lock
+! CapsLockキーをEscキーに割り当てる
+keycode 66 = Escape NoSymbol Escape

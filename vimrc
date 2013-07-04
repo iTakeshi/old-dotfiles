@@ -59,7 +59,7 @@ set number
 set list
 set listchars=eol:$,tab:>-,extends:&,trail:_
 set ruler
-set wrap
+set nowrap
 set shellslash
 set textwidth=0
 set colorcolumn=80

@@ -3,12 +3,10 @@
 git submodule init
 git submodule update
 
-ln -sf ~/dotfiles/vim ~/.vim
+if [ ! -d ~/.vim ]
+then
+  ln -sf ~/dotfiles/vim ~/.vim
+fi
 ln -sf ~/dotfiles/vimrc ~/.vimrc
 ln -sf ~/dotfiles/bashrc ~/.bashrc
 ln -sf ~/dotfiles/gitconfig ~/.gitconfig
-
-if [ ! -d ~/.vimbackup ]
-then
-  mkdir ~/.vimbackup
-fi

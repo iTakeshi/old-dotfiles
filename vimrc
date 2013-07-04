@@ -23,41 +23,55 @@ NeoBundle 'kchmck/vim-coffee-script'
 "General Settings
 set cindent
 set cinoptions=g0
-set backupdir=$HOME/.vimbackup
-set directory=$HOME/.vimbackup
 set smartindent
 set title
 set mouse=a
-set clipboard=unnamed
 set binary
 set noeol
 
 "Edit Settings
 set tabstop=2
 set shiftwidth=2
+set shiftround
 set smarttab
 set expandtab     "replace tab to spaces
 set showmatch     "auto complete )
 set matchtime=1   "wait time for showmatch
 set backspace=indent,eol,start
-set virtualedit=block
+set virtualedit=all
 set whichwrap=b,s,h,l,<,>,[,]
 set hidden
+set switchbuf=useopen
+set infercase
+set matchpairs& matchpairs+=<:>
+if has('unnamedplus')
+  set clipboard& clipboard+=unnamedplus,unnamed 
+else
+  set clipboard& clipboard+=unnamed
+endif
+
+set nowritebackup
+set nobackup
+set noswapfile
 
 "Display Settings
 set number
 set list
 set listchars=eol:$,tab:>-,extends:&,trail:_
 set ruler
-set nowrap
+set wrap
 set shellslash
+set textwidth=0
+set colorcolumn=80
+set t_vb=
+set novisualbell
 
 "Search Settings
-set hlsearch       "enable highligt
-set incsearch      "enable incremental search
-set smartcase      "enable smart case
-set grepprg=grep\ -nH\ $*
+set hlsearch
+set incsearch
 set ignorecase
+set smartcase
+set grepprg=grep\ -nH\ $*
 
 "Plugin Settings
 filetype on

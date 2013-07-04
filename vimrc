@@ -45,7 +45,7 @@ set switchbuf=useopen
 set infercase
 set matchpairs& matchpairs+=<:>
 if has('unnamedplus')
-  set clipboard& clipboard+=unnamedplus,unnamed 
+  set clipboard& clipboard+=unnamedplus,unnamed
 else
   set clipboard& clipboard+=unnamed
 endif

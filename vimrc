@@ -85,5 +85,4 @@ syntax on
 
 "color
 set t_Co=256
-NeoBundle 'vim-scripts/Colour-Sampler-Pack'
 color desertEx

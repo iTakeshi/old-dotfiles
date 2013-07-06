@@ -1,2 +1,5 @@
 # ignore NeoBundled repositories
 /vim/bundle
+
+/vim/.netrwhist
+/vim/view

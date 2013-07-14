@@ -278,13 +278,13 @@ function! s:hooks.on_source(bundle)
   imap <C-k>     <Plug>(neosnippet_expand_or_jump)
   smap <C-k>     <Plug>(neosnippet_expand_or_jump)
   xmap <C-k>     <Plug>(neosnippet_expand_target)
-"  " SuperTab like snippets behavior.
-"  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"        \ '\<Plug>(neosnippet_expand_or_jump)'
-"        \: pumvisible() ? '\<C-n>' : '\<TAB>'
-"  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"        \ '\<Plug>(neosnippet_expand_or_jump)'
-"        \: '\<TAB>'
+  "  " SuperTab like snippets behavior.
+  "  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  "        \ '\<Plug>(neosnippet_expand_or_jump)'
+  "        \: pumvisible() ? '\<C-n>' : '\<TAB>'
+  "  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+  "        \ '\<Plug>(neosnippet_expand_or_jump)'
+  "        \: '\<TAB>'
   " For snippet_complete marker.
   if has('conceal')
     set conceallevel=2 concealcursor=i
@@ -372,7 +372,6 @@ NeoBundleCheck
 unlet s:hooks
 filetype plugin indent on
 " }}} end plugins
-
 
 " search {{{
 set ignorecase
@@ -544,3 +543,23 @@ if !has('gui_running')
   colorscheme desertEx
 endif
 " }}} end style
+
+" filetype detection {{{
+augroup filetypedetect
+  autocmd!
+  " Markdown
+  autocmd! BufNewFile,BufRead *.md setfiletype markdown
+  autocmd! BufNewFile,BufRead *.mkd setfiletype markdown
+  autocmd! BufNewFile,BufRead *.markdown setfiletype markdown
+  " CoffeeScript
+  autocmd! BufNewFile,BufRead *.coffee setfiletype coffee
+  autocmd! BufNewFile,BufRead Cakefile setfiletype coffee
+  " LESS
+  autocmd! BufNewFile,BufRead *.less setfiletype less
+  " SASS/SCSS
+  autocmd! BufNewFile,BufRead *.sass setfiletype sass
+  autocmd! BufNewFile,BufRead *.scss setfiletype scss
+  " Python
+  autocmd! BufNewFile,BufRead SConstruct setfiletype python
+augroup END
+" }}} end filetype detection

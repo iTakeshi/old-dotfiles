@@ -237,11 +237,11 @@ NeoBundle 'vim-scripts/YankRing.vim'
 let yankring_history_file = '.yankring_history'
 
 if has('lua') && (v:version == 703 && has('patch885')) || v:version == 704
-  NeoBundleLazy "Shougo/neocomplete.vim", {
-        \ "autoload": {
-        \   "insert": 1,
+  NeoBundleLazy 'Shougo/neocomplete.vim', {
+        \ 'autoload': {
+        \   'insert': 1,
         \ }}
-  let s:hooks = neobundle#get_hooks("neocomplete.vim")
+  let s:hooks = neobundle#get_hooks('neocomplete.vim')
   function! s:hooks.on_source(bundle)
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
@@ -260,10 +260,15 @@ else
         \ }}
   let s:hooks = neobundle#get_hooks('neocomplcache.vim')
   function! s:hooks.on_source(bundle)
+    " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
+    " Use neocomplcache.
+    let g:neocomplcache_enable_at_startup = 1
+    " Use smartcase.
     let g:neocomplcache_enable_smart_case = 1
+    " Set minimum syntax keyword length.
     let g:neocomplcache_min_syntax_length = 3
-    NeoComplCacheEnable
+    let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
   endfunction
 endif
 

@@ -236,7 +236,7 @@ NeoBundle 'vim-scripts/Align'
 NeoBundle 'vim-scripts/YankRing.vim'
 let yankring_history_file = '.yankring_history'
 
-if has('lua') && v:version >= 703 && has('patch885')
+if has('lua') && (v:version == 703 && has('patch885')) || v:version == 704
   NeoBundleLazy "Shougo/neocomplete.vim", {
         \ "autoload": {
         \   "insert": 1,

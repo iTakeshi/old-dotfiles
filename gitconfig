@@ -1,16 +1,19 @@
 [alias]
-	c = commit -m
-	s = status
-	b = branch -a
-	d = diff
-	co = checkout
-	a = add
-	l = log
-	aa = add .
+  s = status
+  a = add
+  aa = add .
+  c = commit -m
+  l = log
+  d = diff
+  b = branch -a
+  co = checkout
 [user]
-	name = iTakeshi
-	email = takeshi.ito.doraemon@gmail.com
+  name = iTakeshi
+  email = takeshi.ito.doraemon@gmail.com
 [color]
-	ui = true
+  ui = true
 [push]
-	default = simple
+  default = simple
+[core]
+  editor = vim
+  pager = lv -c

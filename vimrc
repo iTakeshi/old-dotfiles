@@ -201,26 +201,12 @@ function! s:hooks.on_source(bundle)
   endfunction
 endfunction
 
-NeoBundle 'Shougo/vimfiler.vim', {'depends': ['Shougo/unite.vim'] }
-nnoremap <Leader>e :VimFilerExplorer<CR>
-" close vimfiler automatically when there are only vimfiler open
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_enable_auto_cd = 1
-" ignore swap, backup, temporary files
-let g:vimfiler_ignore_pattern = '\.pyc$'
-" vimfiler specific key mappings
-autocmd MyAutoCmd FileType vimfiler call s:vimfiler_settings()
-function! s:vimfiler_settings()
-  " ^^ to go up
-  nmap <buffer> ^^ <Plug>(vimfiler_switch_to_parent_directory)
-  " use R to refresh
-  nmap <buffer> R <Plug>(vimfiler_redraw_screen)
-  " overwrite C-l ignore <Plug>(vimfiler_redraw_screen)
-  nmap <buffer> <C-l> <C-w>l
-  " overwrite C-j ignore <Plug>(vimfiler_switch_to_history_directory)
-  nmap <buffer> <C-j> <C-w>j
-endfunction
-autocmd VimEnter * :VimFilerExplorer
+NeoBundle 'scrooloose/nerdtree'
+nmap <Leader>n :NERDTreeToggle<CR>
+let NERDTreeShowHidden = 1
+let NERDTreeAutoDeleteBuffer = 1
+autocmd VimEnter * NERDTree ./
+autocmd VimEnter * wincmd l
 
 NeoBundle 'tpope/vim-fugitive'
 NeoBundleLazy 'gregsexton/gitv', {

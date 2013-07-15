@@ -138,11 +138,6 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=239
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=239
 nnoremap <silent> [toggle]i  :IndentGuidesToggle<CR>
-
-NeoBundleLazy 'skammer/vim-css-color', {
-      \ 'autoload': {
-      \   'filetypes': ['html', 'css', 'less', 'sass', 'javascript', 'coffee', 'coffeescript']
-      \ }}
 " }}} end display plugins
 
 " syntax plugin {{{

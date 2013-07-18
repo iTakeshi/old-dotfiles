@@ -300,18 +300,18 @@ NeoBundleLazy 'thinca/vim-quickrun', {
       \   'mappings': [['nxo', '<Plug>(quickrun)']]
       \ }}
 nmap <Leader>r <Plug>(quickrun)
-let s:hooks = neobundle#get_hooks('vim-quickrun')
-function! s:hooks.on_source(bundle)
-  if has('clientserver')
-    let g:quickrun_config = {
-          \ '*': {'runner': 'remote/vimproc'}
-          \ }
-  else
-    let g:quickrun_config = {
-          \ '*': {'runner': 'remote/vimproc'}
-          \ }
-  endif
-endfunction
+"let s:hooks = neobundle#get_hooks('vim-quickrun')
+"function! s:hooks.on_source(bundle)
+"  if has('clientserver')
+"    let g:quickrun_config = {
+"          \ '*': {'runner': 'remote/vimproc'}
+"          \ }
+"  else
+"    let g:quickrun_config = {
+"          \ '*': {'runner': 'remote/vimproc'}
+"          \ }
+"  endif
+"endfunction
 
 NeoBundleLazy 'majutsushi/tagbar', {
       \ 'autload': {
@@ -530,22 +530,27 @@ if !has('gui_running')
 endif
 " }}} end style
 
-"" filetype detection {{{
-"augroup filetypedetect
-"  autocmd!
-"  " Markdown
-"  autocmd! BufNewFile,BufRead *.md setfiletype markdown
-"  autocmd! BufNewFile,BufRead *.mkd setfiletype markdown
-"  autocmd! BufNewFile,BufRead *.markdown setfiletype markdown
-"  " CoffeeScript
-"  autocmd! BufNewFile,BufRead *.coffee setfiletype coffee
-"  autocmd! BufNewFile,BufRead Cakefile setfiletype coffee
-"  " LESS
-"  autocmd! BufNewFile,BufRead *.less setfiletype less
-"  " SASS/SCSS
-"  autocmd! BufNewFile,BufRead *.sass setfiletype sass
-"  autocmd! BufNewFile,BufRead *.scss setfiletype scss
-"  " Python
-"  autocmd! BufNewFile,BufRead SConstruct setfiletype python
-"augroup END
-"" }}} end filetype detection
+" filetype detection {{{
+
+if exists('did_load_filetypes')
+  finish
+endif
+
+augroup filetypedetect
+  autocmd!
+  " Markdown
+  autocmd! BufNewFile,BufRead *.md setfiletype markdown
+  autocmd! BufNewFile,BufRead *.mkd setfiletype markdown
+  autocmd! BufNewFile,BufRead *.markdown setfiletype markdown
+  " CoffeeScript
+  autocmd! BufNewFile,BufRead *.coffee setfiletype coffee
+  autocmd! BufNewFile,BufRead Cakefile setfiletype coffee
+  " LESS
+  autocmd! BufNewFile,BufRead *.less setfiletype less
+  " SASS/SCSS
+  autocmd! BufNewFile,BufRead *.sass setfiletype sass
+  autocmd! BufNewFile,BufRead *.scss setfiletype scss
+  " Python
+  autocmd! BufNewFile,BufRead SConstruct setfiletype python
+augroup END
+" }}} end filetype detection

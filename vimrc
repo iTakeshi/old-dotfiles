@@ -51,6 +51,8 @@ if has('vim_starting')
   endif
 endif
 
+" suppress tex formula conversion
+let g:tex_conceal = ''
 " }}} end variables
 
 " keymappings {{{
@@ -214,6 +216,7 @@ NeoBundleLazy 'gregsexton/gitv', {
 " editing support {{{
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'vim-scripts/Align'
+let g:Align_xstrlen=3
 NeoBundle 'vim-scripts/YankRing.vim'
 let yankring_history_file = '.yankring_history'
 

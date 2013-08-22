@@ -1,0 +1,61 @@
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get autoremove
+sudo reboot
+
+sudo apt-get install aptitude
+sudo aptitude install build-essential
+sudo aptitude install ibus-mozc
+sudo aptitude install curl
+sudo aptitude install lv
+
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+sudo apt-get update
+sudo aptitude install google-chrome-stable
+
+sudo apt-add-repository ppa:git-core/ppa
+sudo apt-get update
+sudo aptitude install git-core
+
+cd ~
+mkdir .src
+cd .src
+wget ftp://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.bz2
+tar -xf ruby-2.0.0-p247.tar.bz2
+rm ruby-2.0.0-p247.tar.bz2
+cd ruby-2.0.0-p247/
+sudo aptitude install libffi-dev libgdbm-dev libreadline-dev libncurses-dev libyaml-dev libcurl4-openssl-dev zlib1g-dev libssl-dev libxml2-dev libxslt-dev sqlite3 libsqlite3-dev
+./configure --prefix=/usr/local/ruby --bindir=/usr/local/bin
+make && sudo make install
+sudo gem update --system
+sudo gem install bundler
+sudo gem install pry pry-debugger
+sudo gem install nokogiri
+
+sudo aptitude install fontforge
+# install migu_1m and inconsolata
+cd ~
+wget https://raw.github.com/yascentur/Ricty/master/ricty_generator.sh
+bash ricty_generator.sh auto
+mv Ricty-*.ttf .fonts/
+rm ricty_generator.sh
+fc-cache -fv
+sudo aptitude install ttf-mscorefonts-installer ttf-vlgothic ttf-sawarabi-gothic ttf-sazanami-gothic ttf-sazanami-mincho ttf-konatu ttf-hanazono ttf-kochi-gothic ttf-umeplus ttf-komatuna ttf-monapo ttf-umefont otf-ipafont-gothic otf-ipafont-mincho otf-ipaexfont-gothic otf-ipaexfont-mincho ttf-takao-pgothic ttf-takao-mincho
+
+git clone git@github.com:iTakeshi/dotfiles.git
+cd dotfiles/
+./install.sh
+
+cd .src
+hg clone https://code.google.com/p/vim/
+sudo aptitude install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev lua5.2 liblua5.2-dev libperl-dev mercurial checkinstall
+cd .src/vim
+./configure --with-features=huge --disable-darwin --disable-selinux --enable-luainterp --enable-perlinterp --enable-pythoninterp --enable-python3interp --enable-rubyinterp --enable-cscope --enable-multibyte --enable-xim --enable-fontset --enable-gui=gnome2 --enable-fail-if-missing --with-python3-config-dir=/usr/lib/python3.3/config-3.3m-x86_64-linux-gnu
+make
+sudo checkinstall
+
+# turn on personal ppa
+sudo aptitude install skype
+sudo aptitude install qt4-qtconfig
+sudo aptitude install dropbox

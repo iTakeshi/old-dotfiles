@@ -7,9 +7,15 @@ if [ ! -d ~/.vim ]
 then
   ln -sf ~/dotfiles/vim ~/.vim
 fi
+
 if [ ! -d ~/.fonts ]
 then
   ln -sf ~/dotfiles/fonts ~/.fonts
+fi
+
+if [ ! -d ~/.gconf/apps/gnome-terminal/profiles ]
+then
+  ln -sf ~/dotfiles/gnome-terminal-profiles ~/.gconf/apps/gnome-terminal/profiles
 fi
 
 ln -sf ~/dotfiles/vimrc ~/.vimrc

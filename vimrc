@@ -352,9 +352,9 @@ let s:hooks = neobundle#get_hooks('jedi-vim')
 function! s:hooks.on_source(bundle)
   let g:jedi#auto_vim_configuration = 0
   let g:jedi#popup_select_first = 0
-  let g:jedi#show_function_definition = 1
+  let g:jedi#show_function_signature = 1
   let g:jedi#rename_command = '<Leader>R'
-  let g:jedi#goto_command = '<Leader>G'
+  let g:jedi#goto_assignments_command = '<Leader>G'
 endfunction
 " }}}
 

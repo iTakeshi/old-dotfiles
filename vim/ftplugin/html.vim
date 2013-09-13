@@ -7,4 +7,4 @@ setl expandtab
 setl autoindent
 setl nosmartindent
 setl cindent
-setl colorcolumn 80
+setl colorcolumn=80

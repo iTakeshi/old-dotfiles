@@ -123,5 +123,6 @@ export PATH=$PATH:/usr/lib
 
 PS1='\[\033[01;33m\]\u\[\033[01;31m\] \w$(__git_ps1) \$\[\033[00m\] '
 
+alias gconf='gconftool-2'
 alias be='bundle exec'
 alias off='sudo shutdown -h now'

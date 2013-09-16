@@ -13,9 +13,9 @@ then
   ln -sf ~/dotfiles/fonts ~/.fonts
 fi
 
-if [ ! -d ~/.gconf/apps/gnome-terminal/profiles ]
+if [ ! -d ~/.gconf/apps/gnome-terminal ]
 then
-  ln -sf ~/dotfiles/gnome-terminal-profiles ~/.gconf/apps/gnome-terminal/profiles
+  ln -sf ~/dotfiles/gnome-terminal ~/.gconf/apps/gnome-terminal
 fi
 
 ln -sf ~/dotfiles/vimrc ~/.vimrc

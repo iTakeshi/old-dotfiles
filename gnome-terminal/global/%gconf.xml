@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <gconf>
-	<entry name="default_profile" mtime="1378867080" type="string">
-		<stringvalue>Default</stringvalue>
-	</entry>
-	<entry name="profile_list" mtime="1378867080" type="list" ltype="string">
-		<li type="string">
-			<stringvalue>Default</stringvalue>
-		</li>
-		<li type="string">
-			<stringvalue>VaioPro11</stringvalue>
-		</li>
-	</entry>
+  <entry name="default_profile" mtime="1379306346" type="string">
+    <stringvalue>VaioPro11</stringvalue>
+  </entry>
+  <entry name="profile_list" mtime="1378867080" type="list" ltype="string">
+    <li type="string">
+      <stringvalue>Default</stringvalue>
+    </li>
+    <li type="string">
+      <stringvalue>VaioPro11</stringvalue>
+    </li>
+  </entry>
 </gconf>

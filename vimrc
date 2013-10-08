@@ -138,7 +138,7 @@ let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=239
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=239
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=243
 nnoremap <silent> [toggle]i  :IndentGuidesToggle<CR>
 " }}} end display plugins
 
@@ -405,7 +405,7 @@ set formatoptions-=o
 
 " use clipboard register
 if has('unnamedplus')
-  set clipboard& clipboard+=unnamedplus
+  set clipboard=unnamedplus,autoselect
 else
   set clipboard& clipboard+=unnamed
 endif
@@ -430,7 +430,7 @@ set updatetime=1000
 " set swap directory
 set directory& directory-=.
 if v:version >= 703
-  set undofile
+  set undodir=~/.vimundo
   let &undodir=&directory
 endif
 

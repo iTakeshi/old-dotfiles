@@ -24,3 +24,5 @@ ln -sf ~/dotfiles/bash_profile ~/.bash_profile
 ln -sf ~/dotfiles/gemrc ~/.gemrc
 ln -sf ~/dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/Xmodmap ~/.Xmodmap
+
+sh ~/dotfiles/gnome_terminal.sh

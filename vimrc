@@ -160,6 +160,17 @@ NeoBundleLazy 'cakebaker/scss-syntax.vim', {'autoload': {
 
 NeoBundleLazy 'vim-ruby/vim-ruby', {'autoload': {
       \ 'filetypes': ['ruby', 'eruby'] }}
+
+NeoBundleLazy 'jQuery', {'autoload': {
+      \ 'filetypes': ['coffee', 'coffeescript', 'javascript', 'html', 'eruby'] }}
+
+NeoBundleLazy 'kchmck/vim-coffee-script', {'autoload': {
+      \ 'filetypes': ['coffee', 'coffeescript'] }}
+
+NeoBundleLazy 'iTakeshi/EcellModel.vim', {'autoload': {
+      \ 'filetypes': ['EcellModel'] }}
+
+NeoBundle 'nono/vim-handlebars'
 " }}} end syntax plugin
 
 " file management {{{
@@ -327,35 +338,27 @@ NeoBundle 'scrooloose/syntastic', {
       \   'unix': ['pip install pyflake', 'npm -g install coffeelint'],
       \ }}
 
-NeoBundleLazy 'jQuery', {'autoload': {
-      \ 'filetypes': ['coffee', 'coffeescript', 'javascript', 'html', 'eruby'] }}
-NeoBundleLazy 'kchmck/vim-coffee-script', {'autoload': {
-      \ 'filetypes': ['coffee', 'coffeescript'] }}
-
-NeoBundleLazy 'iTakeshi/EcellModel.vim', {'autoload': {
-      \ 'filetypes': ['EcellModel'] }}
-
 " Python {{{
-NeoBundleLazy 'jmcantrell/vim-virtualenv', {
-      \ 'autoload': {
-      \   'filetypes': ['python', 'python3', 'djangohtml']
-      \ }}
-NeoBundleLazy 'davidhalter/jedi-vim', {
-      \ 'autoload': {
-      \   'filetypes': ['python', 'python3', 'djangohtml'],
-      \   'build': {
-      \     'mac': 'pip install jedi',
-      \     'unix': 'pip install jedi',
-      \   }
-      \ }}
-let s:hooks = neobundle#get_hooks('jedi-vim')
-function! s:hooks.on_source(bundle)
-  let g:jedi#auto_vim_configuration = 0
-  let g:jedi#popup_select_first = 0
-  let g:jedi#show_function_signature = 1
-  let g:jedi#rename_command = '<Leader>R'
-  let g:jedi#goto_assignments_command = '<Leader>G'
-endfunction
+" NeoBundleLazy 'jmcantrell/vim-virtualenv', {
+"       \ 'autoload': {
+"       \   'filetypes': ['python', 'python3', 'djangohtml']
+"       \ }}
+" NeoBundleLazy 'davidhalter/jedi-vim', {
+"       \ 'autoload': {
+"       \   'filetypes': ['python', 'python3', 'djangohtml'],
+"       \   'build': {
+"       \     'mac': 'pip install jedi',
+"       \     'unix': 'pip install jedi',
+"       \   }
+"       \ }}
+" let s:hooks = neobundle#get_hooks('jedi-vim')
+" function! s:hooks.on_source(bundle)
+"   let g:jedi#auto_vim_configuration = 0
+"   let g:jedi#popup_select_first = 0
+"   let g:jedi#show_function_signature = 1
+"   let g:jedi#rename_command = '<Leader>R'
+"   let g:jedi#goto_assignments_command = '<Leader>G'
+" endfunction
 " }}}
 
 "}}}

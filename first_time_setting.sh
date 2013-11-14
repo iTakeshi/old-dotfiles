@@ -16,8 +16,8 @@
 # sudo reboot
 ###############################################################################
 
-sudo apt-get install aptitude
-sudo aptitude -y install curl build-essential autoconf automake checkinstall mercurial ibus-mozc lv python-software-properties banshee sqlite3 python-pip python-virtualenv virtualenvwrapper
+sudo apt-get -y install aptitude
+sudo aptitude -y install curl build-essential autoconf automake paco mercurial ibus-mozc lv python-software-properties sqlite3 python-pip python-virtualenv virtualenvwrapper banshee gimp inkscape
 
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
@@ -29,8 +29,8 @@ sudo aptitude -y install google-chrome-stable git-core oracle-java7-installer no
 
 cd ~
 git clone git@github.com:iTakeshi/dotfiles.git
-sh dotfiles/install.sh
-sh dotfiles/gnome_terminal.sh
+cd dotfiles
+sh install.sh
 
 sudo aptitude -y install ttf-mscorefonts-installer ttf-vlgothic ttf-sawarabi-gothic ttf-sazanami-gothic ttf-sazanami-mincho ttf-konatu ttf-hanazono ttf-kochi-gothic ttf-umeplus ttf-komatuna ttf-monapo ttf-umefont otf-ipafont-gothic otf-ipafont-mincho otf-ipaexfont-gothic otf-ipaexfont-mincho ttf-takao-pgothic ttf-takao-mincho
 
@@ -49,8 +49,8 @@ done
 tar -xf ruby-2.0.0-p247.tar.bz2
 rm ruby-2.0.0-p247.tar.bz2
 cd ruby-2.0.0-p247/
-.configure
-make && sudo checkinstall
+./configure
+make && sudo paco -D make install
 sudo gem update --system
 sudo gem update
 sudo gem install bundler pry pry-debugger nokogiri
@@ -60,17 +60,18 @@ cd ~/.src
 hg clone https://code.google.com/p/vim/
 cd vim
 ./configure --with-features=huge --disable-darwin --disable-selinux --enable-luainterp --enable-perlinterp --enable-pythoninterp --enable-python3interp --enable-rubyinterp --enable-cscope --enable-multibyte --enable-xim --enable-fontset --enable-gui=gnome2 --enable-fail-if-missing --with-python3-config-dir=/usr/lib/python3.3/config-3.3m-x86_64-linux-gnu
-make && sudo checkinstall
+make && sudo paco -D make install
 
 mkdir -p ~/ecell
 
 cd ~/ecell
 sudo aptitude -y install docbook-utils doxygen gsl-bin libboost-dev libboost-python-dev libgsl0-dbg libgsl0-dev libsbml5-python docbook-xsl python-gtk2-dev
+sudo pip install ply
 git clone git@github.com:iTakeshi/ecell3.git
 cd ecell3
 ./autogen.sh
 ./configure
-make && sudo checkinstall
+make && sudo paco -D make install
 
 cd ~/ecell
 git clone git@github.com:ecell/ecellp.git

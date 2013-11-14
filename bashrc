@@ -119,7 +119,8 @@ fi
 # =======================================================================================
 
 export EDITOR=vim
-export PATH=$PATH:/usr/lib
+export PATH=/home/itakeshi/Qt/5.1.1/gcc_64/bin:/usr/lib:$PATH
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 
 PS1='\[\033[01;33m\]\u\[\033[01;31m\] \w$(__git_ps1) \$\[\033[00m\] '
 

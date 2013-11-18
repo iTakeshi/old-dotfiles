@@ -216,7 +216,7 @@ function! s:hooks.on_source(bundle)
   endfunction
 endfunction
 function! g:exec_vimfiler()
-  VimFilerExplorer -simple -winwidth=30
+  VimFiler -split -simple -winwidth=30 -no-quit
   if &filetype == 'vimfiler'
     setl nonumber
   endif

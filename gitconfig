@@ -1,9 +1,10 @@
 [alias]
   s = status
   a = add
-  aa = add .
+  aa = add -A
   c = commit -m
   l = log
+  sl = shortlog
   d = diff
   b = branch
   ba = branch -a

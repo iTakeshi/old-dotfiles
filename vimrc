@@ -194,8 +194,6 @@ function! s:hooks.on_source(bundle)
 endfunction
 
 NeoBundle 'Shougo/vimfiler', { 'depends': ['Shougo/unite.vim'] }
-" close vimfiler automatically when there are only vimfiler open
-autocmd MyAutoCmd BufEnter * if (winnr('$') == 1 && &filetype ==# 'vimfiler') | q | endif
 let s:hooks = neobundle#get_hooks('vimfiler')
 function! s:hooks.on_source(bundle)
   let g:vimfiler_as_default_explorer = 1
@@ -349,9 +347,17 @@ NeoBundle 'vim-scripts/Align'
 let g:Align_xstrlen=3
 
 " clipboard history
-NeoBundle 'vim-scripts/YankRing.vim'
-let yankring_history_file = '.yankring_history'
+NeoBundle 'LeafCage/yankround.vim'
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
+let g:yankround_max_history = 50
 
+" more usefull 'f'
+NeoBundle 'rhysd/clever-f.vim'
+
+" autocomplete
 if has('lua') && ( (v:version == 703 && has('patch885')) || v:version == 704 )
   NeoBundleLazy 'Shougo/neocomplete.vim', {
         \ 'autoload': {

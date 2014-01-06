@@ -455,6 +455,9 @@ NeoBundleLazy 'vim-ruby/vim-ruby', {'autoload': {
 
 NeoBundleLazy 'iTakeshi/EcellModel.vim', {'autoload': {
       \ 'filetypes': ['EcellModel'] }}
+
+NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex', {'autoload': {
+      \ 'filetypes': ['tex'] }}
 " }}} Syntax plugins
 
 filetype plugin indent on

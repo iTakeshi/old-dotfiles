@@ -591,6 +591,8 @@ set lazyredraw
 
 set display=lastline
 
+set ambiwidth=double
+
 if v:version >= 703
   set conceallevel=2 concealcursor=iv
   set colorcolumn=80

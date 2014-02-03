@@ -126,7 +126,7 @@ nnoremap [toggle] <Nop>
 nmap T [toggle]
 nnoremap <silent> [toggle]s :<C-u>setl spell!<CR>:setl spell?<CR>
 nnoremap <silent> [toggle]l :<C-u>setl list!<CR>:setl list?<CR>
-nnoremap <silent> [toggle]t :<C-u>setl expandtab!<CR>:setl expandtab?<CR>
+nnoremap <silent> [toggle]et :<C-u>setl expandtab!<CR>:setl expandtab?<CR>
 nnoremap <silent> [toggle]w :<C-u>setl wrap!<CR>:setl wrap?<CR>
 nnoremap <silent> [toggle]p :<C-u>setl paste!<CR>:setl paste?<CR>
 " }}} Key Mappings
@@ -158,6 +158,10 @@ NeoBundle 'Shougo/vimproc', {
 NeoBundle 'Shougo/vimshell.vim', { 'depends': ['Shougo/vimproc'] }
 let g:vimshell_prompt_expr = 'getcwd()." > "'
 let g:vimshell_prompt_pattern = '^\f\+ > '
+
+NeoBundleLazy 'majutsushi/tagbar', { 'autload': {
+      \   'commands': ['TagbarToggle']}}
+nnoremap <silent> [toggle]t :<C-u>TagbarToggle<CR>
 
 " Unite.vim and relating plugins {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

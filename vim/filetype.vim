@@ -18,6 +18,10 @@ augroup filetypedetect
   au BufNewFile,BufRead *.scss setf scss
   " Python
   au BufNewFile,BufRead SConstruct setf python
+  " MATLAB
+  au BufNewFile,BufRead *.m setf matlab
   " EcellModel
   au BufNewFile,BufRead *.em setf EcellModel
+  " TempoProtocol
+  au BufNewFile,BufRead *.pro setf TempoProtocol
 augroup END

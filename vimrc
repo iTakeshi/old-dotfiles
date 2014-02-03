@@ -1,5 +1,8 @@
-"Be IMproved
+" Be IMproved
 set nocompatible
+
+" Down with cp932! UTF-8 4lyfe!!
+scriptencoding utf-8
 
 " OS Dependent {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -427,7 +430,7 @@ NeoBundle 'scrooloose/syntastic', {
 NeoBundle 'jceb/vim-hier'
 " }}} Programming support plugins
 
-" Syntax plugins {{{
+" Filetype plugins {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 NeoBundleLazy 'tpope/vim-git', {'autoload': {
       \ 'filetypes': 'git' }}
@@ -456,8 +459,16 @@ NeoBundleLazy 'vim-ruby/vim-ruby', {'autoload': {
 NeoBundleLazy 'iTakeshi/EcellModel.vim', {'autoload': {
       \ 'filetypes': ['EcellModel'] }}
 
-NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex', {'autoload': {
+if s:is_linux
+  NeoBundleLazy 'git://git.code.sf.net/p/vim-latex/vim-latex', {'autoload': {
       \ 'filetypes': ['tex'] }}
+endif
+
+NeoBundleLazy 'iTakeshi/TempoProtocol.vim', { 'autoload': {
+      \ 'filetypes': ['TempoProtocol'] }}
+
+NeoBundleLazy 'iTakeshi/matlab.vim', { 'autoload': {
+      \ 'filetypes': ['matlab'] }}
 " }}} Syntax plugins
 
 filetype plugin indent on
@@ -606,6 +617,10 @@ if !has('gui_running')
   set background=dark
 endif
 colorscheme desertEx
+
+if s:is_windows && has('gui_running')
+  set guifont=Migu_1M:h12:cSHIFTJIS
+endif
 " }}} Display
 
 " Fold {{{

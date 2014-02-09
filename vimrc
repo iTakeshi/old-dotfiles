@@ -651,3 +651,9 @@ set foldlevel=1
 set foldnestmax=5
 set foldmethod=marker
 " }}} Fold
+
+" Utility {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! VimColorTest call color_test#color_test(expand('~/vim-color-test.tmp'), 255)
+map <Leader>s :call syn_id#syn_id()<CR>
+" }}} Utility

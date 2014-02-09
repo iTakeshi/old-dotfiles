@@ -501,6 +501,14 @@ endif
 
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 cnoremap <expr> ? getcmdtype() == '?' ? '\?' : '?'
+
+" Localize search options.
+autocmd WinLeave *
+\     let b:vimrc_pattern = @/
+\   | let b:vimrc_hlsearch = &hlsearch
+autocmd WinEnter *
+\     let @/ = get(b:, 'vimrc_pattern', @/)
+\   | let &l:hlsearch = get(b:, 'vimrc_hlsearch', &l:hlsearch)
 " }}} Search
 
 " Edit {{{

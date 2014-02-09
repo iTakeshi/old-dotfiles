@@ -372,9 +372,6 @@ nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 let g:yankround_max_history = 50
 
-" more usefull 'f'
-NeoBundle 'rhysd/clever-f.vim'
-
 " autocomplete
 if has('lua') && ( (v:version == 703 && has('patch885')) || v:version == 704 )
   NeoBundleLazy 'Shougo/neocomplete.vim', {

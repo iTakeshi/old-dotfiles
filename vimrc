@@ -159,9 +159,9 @@ NeoBundle 'Shougo/vimshell.vim', { 'depends': ['Shougo/vimproc'] }
 let g:vimshell_prompt_expr = 'getcwd()." > "'
 let g:vimshell_prompt_pattern = '^\f\+ > '
 
-NeoBundleLazy 'majutsushi/tagbar', { 'autload': {
-      \   'commands': ['TagbarToggle']}}
+NeoBundle 'majutsushi/tagbar'
 nnoremap <silent> [toggle]t :<C-u>TagbarToggle<CR>
+let g:tagbar_width = 40
 
 " Unite.vim and relating plugins {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -245,12 +245,13 @@ NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename', 'currenttag' ] ],
       \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'MyFugitive',
       \   'filename': 'MyFilename',
+      \   'currenttag': 'MyCurrentTag',
       \   'fileformat': 'MyFileformat',
       \   'filetype': 'MyFiletype',
       \   'fileencoding': 'MyFileencoding',
@@ -274,6 +275,7 @@ endfunction
 function! MyFilename()
   let fname = expand('%:t')
   return fname =~ '__Gundo' ? '' :
+        \ fname == '__Tagbar__' ? g:lightline.fname :
         \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
         \ &ft == 'unite' ? unite#get_status_string() :
         \ &ft == 'vimshell' ? vimshell#get_status_string() :
@@ -283,7 +285,7 @@ function! MyFilename()
 endfunction
 function! MyFugitive()
   try
-    if expand('%:t') !~? 'Gundo' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+    if expand('%:t') !~? 'Tagbar\|Gundo' && &ft !~? 'vimfiler' && exists('*fugitive#head')
       let mark = ''  " edit here for cool mark
       let _ = fugitive#head()
       return strlen(_) ? mark._ : ''
@@ -305,11 +307,20 @@ function! MyMode()
   let fname = expand('%:t')
   return fname == '__Gundo__' ? 'Gundo' :
         \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+        \ fname == '__Tagbar__' ? 'Tagbar' :
         \ &ft == 'unite' ? 'Unite' :
         \ &ft == 'vimfiler' ? 'VimFiler' :
         \ &ft == 'vimshell' ? 'VimShell' :
         \ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+function! MyCurrentTag()
+  return tagbar#currenttag('%s', '')
+endfunction
+function! TagbarStatusFunc(current, sort, fname, ...) abort
+    let g:lightline.fname = a:fname
+  return lightline#statusline(0)
+endfunction
+let g:tagbar_status_func = 'TagbarStatusFunc'
 augroup AutoSyntastic
   autocmd!
   autocmd BufWritePost *.c,*.cpp call s:syntastic()

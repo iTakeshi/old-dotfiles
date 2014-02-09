@@ -472,7 +472,7 @@ NeoBundleLazy 'iTakeshi/EcellModel.vim', {'autoload': {
       \ 'filetypes': ['EcellModel'] }}
 
 if s:is_linux
-  NeoBundleLazy 'git://git.code.sf.net/p/vim-latex/vim-latex', {'autoload': {
+  NeoBundleLazy 'LaTeX-Box-Team/LaTeX-Box', {'autoload': {
       \ 'filetypes': ['tex'] }}
 endif
 

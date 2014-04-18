@@ -338,6 +338,12 @@ NeoBundle 'vim-scripts/restore_view.vim'
 
 " indentation guide
 NeoBundle 'Yggdroot/indentLine'
+
+" choose window
+NeoBundle 't9md/vim-choosewin'
+nmap - <Plug>(choosewin)
+let g:choosewin_overlay_enable = 1
+let g:choosewin_overlay_clear_multibyte = 1
 " }}} Display plugins
 
 " Git plugins {{{

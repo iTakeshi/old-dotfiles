@@ -27,7 +27,7 @@ sudo apt-add-repository -y ppa:git-core/ppa
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get update
-sudo aptitude -y install google-chrome-stable git-core oracle-java7-installer nodejs
+sudo aptitude -y install google-chrome-stable git-core oracle-java8-installer nodejs
 
 cd ~
 git clone git@github.com:iTakeshi/dotfiles.git
@@ -49,16 +49,16 @@ cd ~/.src
 ruby_major=2
 ruby_minor=1
 ruby_teeny=1
-ruby_folder="${ruby_major}.${ruby_minor}.${ruby_teeny}"
+ruby_folder="ruby-${ruby_major}.${ruby_minor}.${ruby_teeny}"
 ruby_tar="${ruby_folder}.tar.gz"
 ruby_url="http://cache.ruby-lang.org/pub/ruby/${ruby_major}.${ruby_minor}/${ruby_tar}"
 checksum=""
 touch $ruby_tar
-while [ "$checksum" != "e57fdbb8ed56e70c43f39c79da1654b2" ]
+while [ "$checksum" != "e57fdbb8ed56e70c43f3" ]
 do
   rm $ruby_tar
   wget $ruby_url
-  checksum=`md5sum $ruby_tar`
+  checksum=`md5sum $ruby_tar | cut -c 1-20`
 done
 tar -xf $ruby_tar
 rm $ruby_tar
@@ -93,3 +93,7 @@ cd vim
   --enable-fail-if-missing \
   --with-python3-config-dir=/usr/lib/python3.3/config-3.3m-x86_64-linux-gnu
 make && sudo paco -D make install
+
+# cleaning up
+sudo rm /etc/apt/sources.list.d/google.list
+sudo rm /etc/apt/sources.list.d/google.list.save

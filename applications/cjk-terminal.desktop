@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=CJK Terminal
+GenericName=Terminal Emulator
+Comment=CJK Terminal
+Exec=env VTE_CJK_WIDTH=1 gnome-terminal --disable-factory
+Terminal=false
+Icon=utilities-terminal
+Type=Application
+Categories=GNOME;GTK;Utility;TerminalEmulator;

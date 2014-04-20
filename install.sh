@@ -20,4 +20,12 @@ ln -sf ~/dotfiles/gemrc ~/.gemrc
 ln -sf ~/dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/Xmodmap ~/.Xmodmap
 
+ln -sf ~/dotfiles/applications/cjk-terminal.desktop ~/.local/share/applications/cjk-terminal.desktop
+ln -sf ~/dotfiles/applications/google-chrome.desktop ~/.local/share/applications/google-chrome-with-local-file-access.desktop
+
+if [ -e /usr/bin/skype ]
+then
+  ln -sf ~/dotfiles/applications/skype.desktop ~/.config/autostart/skype.desktop
+fi
+
 sh ~/dotfiles/gnome_terminal.sh

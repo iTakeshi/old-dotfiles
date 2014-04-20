@@ -16,18 +16,31 @@
 # sudo reboot
 ###############################################################################
 
+read -p "Home-use?" yn
+case $yn in
+    [Yy]* ) home_use=true;;
+    [Nn]* ) home_use=false;;
+    * ) echo "Please answer yes or no.";;
+esac
+
 sudo apt-get -y install aptitude
 sudo aptitude -y install \
   curl build-essential autoconf automake paco mercurial ibus-mozc lv \
-  python-software-properties sqlite3 banshee gimp inkscape
+  python-software-properties sqlite3 gimp inkscape rar
 
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
+# Workaround: repo for trusty is not served.
+# sudo add-apt-repository "deb http://linux.dropbox.com/ubuntu $(lsb_release -sc) main"
+sudo add-apt-repository -y "deb http://linux.dropbox.com/ubuntu saucy main"
 sudo apt-add-repository -y ppa:git-core/ppa
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get update
-sudo aptitude -y install google-chrome-stable git-core oracle-java8-installer nodejs
+sudo aptitude -y install \
+  google-chrome-stable git-core oracle-java8-installer \
+  nodejs dropbox python-gpgme libappindicator1
 
 cd ~
 git clone git@github.com:iTakeshi/dotfiles.git
@@ -93,6 +106,13 @@ cd vim
   --enable-fail-if-missing \
   --with-python3-config-dir=/usr/lib/python3.3/config-3.3m-x86_64-linux-gnu
 make && sudo paco -D make install
+
+if $home_use
+then
+  sed -i -e "s/^# \(.* partner\)$/\1/g" sources.list
+  sudo apt-get update
+  sudo aptitude -y install xbmc asunder skype
+fi
 
 # cleaning up
 sudo rm /etc/apt/sources.list.d/google.list

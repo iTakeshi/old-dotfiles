@@ -27,5 +27,6 @@ if [ -e /usr/bin/skype ]
 then
   ln -sf ~/dotfiles/applications/skype.desktop ~/.config/autostart/skype.desktop
 fi
+ln -sf ~/dotfiles/applications/apply-xmodmap.desktop ~/.config/autostart/apply-xmodmap.desktop
 
 sh ~/dotfiles/gnome_terminal.sh

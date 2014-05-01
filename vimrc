@@ -446,6 +446,7 @@ NeoBundle 'scrooloose/syntastic', {
 
 " highlight quickfix errors
 NeoBundle 'jceb/vim-hier'
+nmap <silent> <Esc><Esc> :<C-u>noh<CR>:<C-u>HierClear<CR>
 " }}} Programming support plugins
 
 " Filetype plugins {{{

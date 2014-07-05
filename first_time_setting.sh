@@ -31,9 +31,7 @@ sudo aptitude -y install \
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
-# Workaround: repo for trusty is not served.
-# sudo add-apt-repository "deb http://linux.dropbox.com/ubuntu $(lsb_release -sc) main"
-sudo add-apt-repository -y "deb http://linux.dropbox.com/ubuntu saucy main"
+sudo add-apt-repository "deb http://linux.dropbox.com/ubuntu $(lsb_release -sc) main"
 sudo apt-add-repository -y ppa:git-core/ppa
 sudo add-apt-repository -y ppa:webupd8team/java
 sudo add-apt-repository -y ppa:chris-lea/node.js

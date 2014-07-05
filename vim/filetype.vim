@@ -24,4 +24,6 @@ augroup filetypedetect
   au BufNewFile,BufRead *.em setf EcellModel
   " TempoProtocol
   au BufNewFile,BufRead *.pro setf TempoProtocol
+  " Peg.js
+  au BufNewFile,BufRead *.pegjs setf pegjs
 augroup END

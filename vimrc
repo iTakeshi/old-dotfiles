@@ -367,8 +367,7 @@ nnoremap <silent> [toggle]c <Plug>CapsLockToggle
 NeoBundle 'tpope/vim-surround'
 
 " code alignment
-NeoBundle 'vim-scripts/Align'
-let g:Align_xstrlen=3
+NeoBundle 'h1mesuke/vim-alignta'
 
 " clipboard history
 NeoBundle 'LeafCage/yankround.vim'

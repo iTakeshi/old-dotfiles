@@ -59,13 +59,13 @@ sudo aptitude -y install \
 cd ~/.src
 ruby_major=2
 ruby_minor=1
-ruby_teeny=1
+ruby_teeny=2
 ruby_folder="ruby-${ruby_major}.${ruby_minor}.${ruby_teeny}"
 ruby_tar="${ruby_folder}.tar.gz"
 ruby_url="http://cache.ruby-lang.org/pub/ruby/${ruby_major}.${ruby_minor}/${ruby_tar}"
 checksum=""
 touch $ruby_tar
-while [ "$checksum" != "e57fdbb8ed56e70c43f3" ]
+while [ "$checksum" != "a5b5c83565f8bd954ee5" ]
 do
   rm $ruby_tar
   wget $ruby_url
@@ -74,11 +74,11 @@ done
 tar -xf $ruby_tar
 rm $ruby_tar
 cd $ruby_folder
-./configure --without-readline # XXX avoid compile bug
+./configure
 make && sudo paco -D make install
-# sudo gem update --system
-# sudo gem update
-# sudo gem install bundler pry pry-debugger nokogiri
+sudo gem update --system
+sudo gem update
+sudo gem install bundler pry pry-byebug nokogiri
 
 sudo aptitude -y install \
   libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev \

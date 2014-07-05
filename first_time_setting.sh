@@ -37,7 +37,7 @@ sudo add-apt-repository -y ppa:webupd8team/java
 sudo add-apt-repository -y ppa:chris-lea/node.js
 sudo apt-get update
 sudo aptitude -y install \
-  google-chrome-stable git-core oracle-java8-installer \
+  google-chrome-stable git-core oracle-java7-installer \
   nodejs dropbox python-gpgme libappindicator1
 
 cd ~

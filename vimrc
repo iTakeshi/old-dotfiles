@@ -220,20 +220,20 @@ function! s:hooks.on_source(bundle)
     nmap <buffer> <C-l> <C-w>l
   endfunction
 endfunction
-function! g:exec_vimfiler()
+function! s:exec_vimfiler()
   VimFiler -split -simple -winwidth=30 -no-quit
   if &filetype == 'vimfiler'
     setl nonumber
   endif
 endfunction
 function! s:exec_vimfiler_on_vimenter()
-  call g:exec_vimfiler()
+  call s:exec_vimfiler()
   wincmd l
   if expand('%') == ''
     wincmd h
   endif
 endfunction
-command! ExecVimFiler :call g:exec_vimfiler()
+command! ExecVimFiler :call s:exec_vimfiler()
 nnoremap <Leader>e :<C-u>ExecVimFiler<CR>
 autocmd MyAutoCmd VimEnter * call s:exec_vimfiler_on_vimenter()
 " }}} Unite.vim and relating plugins

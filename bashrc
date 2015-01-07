@@ -116,13 +116,14 @@ fi
 # =======================================================================================
 
 export EDITOR=vim
-export PATH=/home/itakeshi/Qt/5.1.1/gcc_64/bin:/usr/lib:/home/itakeshi/.cabal/bin:/home/itakeshi/packer:$PATH
+export PATH=/home/itakeshi/.local/bin:/usr/lib:/home/itakeshi/.cabal/bin:/home/itakeshi/packer:$PATH
 export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 
 PS1='\[\033[01;33m\]\u@\h\[\033[01;31m\] \w$(__git_ps1) \$\[\033[00m\] '
 
 alias gconf='gconftool-2'
 alias be='bundle exec'
+alias nr='npm run'
 alias off='sudo shutdown -h now'
 alias cad='gnome-session-quit'
 
@@ -138,3 +139,30 @@ man() {
     LESS_TERMCAP_us=$(printf "\e[1;32m") \
     man "$@"
 }
+
+export QTDIR
+export LD_LIBRARY_PATH
+export MANPATH
+export LIBRARY_PATH
+export CPLUS_INCLUDE_PATH
+QTDIR=/usr/local/Qt/5.3/gcc_64
+PATH=$QTDIR/bin:$PATH
+
+if [ $LD_LIBRARY_PATH ] ; then
+LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
+else LD_LIBRARY_PATH=$QTDIR/lib
+fi
+
+if [ $MANPATH ] ; then
+MANPATH=$QTDIR/man:$MANPATH
+else
+MANPATH=$QTDIR/man
+fi
+
+LIBRARY_PATH=$LD_LIBRARY_PATH
+
+if [ $CPLUS_INCLUDE_PATH ] ; then
+CPLUS_INCLUDE_PATH=$QTDIR/include/Qt:$CPLUS_INCLUDE_PATH
+else
+CPLUS_INCLUDE_PATH=$QTDIR/include/Qt
+fi

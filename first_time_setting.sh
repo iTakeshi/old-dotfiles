@@ -58,14 +58,14 @@ sudo aptitude -y install \
   libcurl4-openssl-dev zlib1g-dev libssl-dev libxml2-dev libxslt-dev sqlite3 libsqlite3-dev
 cd ~/.src
 ruby_major=2
-ruby_minor=1
-ruby_teeny=2
+ruby_minor=2
+ruby_teeny=0
 ruby_folder="ruby-${ruby_major}.${ruby_minor}.${ruby_teeny}"
 ruby_tar="${ruby_folder}.tar.gz"
 ruby_url="http://cache.ruby-lang.org/pub/ruby/${ruby_major}.${ruby_minor}/${ruby_tar}"
 checksum=""
 touch $ruby_tar
-while [ "$checksum" != "a5b5c83565f8bd954ee5" ]
+while [ "$checksum" != "cd03b28fd0b555970f5c" ]
 do
   rm $ruby_tar
   wget $ruby_url

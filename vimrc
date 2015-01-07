@@ -490,6 +490,9 @@ NeoBundleLazy 'iTakeshi/matlab.vim', { 'autoload': {
 
 NeoBundleLazy 'alunny/pegjs-vim', { 'autoload': {
       \ 'filetypes': ['pegjs'] }}
+
+NeoBundleLazy 'JuliaLang/julia-vim', { 'autoload': {
+      \ 'filetypes': ['julia'] }}
 " }}} Syntax plugins
 
 filetype plugin indent on

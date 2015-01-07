@@ -26,4 +26,6 @@ augroup filetypedetect
   au BufNewFile,BufRead *.pro setf TempoProtocol
   " Peg.js
   au BufNewFile,BufRead *.pegjs setf pegjs
+  " Julia
+  au BufNewFile,BufRead *.jl setf julia
 augroup END

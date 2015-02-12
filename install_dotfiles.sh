@@ -1,11 +1,15 @@
 #!/bin/sh
 
 git submodule init
-git submodule update
+git submodule update --depth 1
 
 if [ ! -d ~/.vim ]
 then
   ln -sf ~/dotfiles/vim ~/.vim
+fi
+if [ ! -d ~/.nvim ]
+then
+  ln -sf ~/dotfiles/vim ~/.nvim
 fi
 
 if [ ! -d ~/.fonts ]
@@ -14,6 +18,7 @@ then
 fi
 
 ln -sf ~/dotfiles/vimrc ~/.vimrc
+ln -sf ~/dotfiles/vimrc ~/.nvimrc
 ln -sf ~/dotfiles/bashrc ~/.bashrc
 ln -sf ~/dotfiles/bash_profile ~/.bash_profile
 ln -sf ~/dotfiles/gemrc ~/.gemrc

@@ -1,3 +1,5 @@
+#!/bin/sh
+
 sudo aptitude -y install \
   libffi-dev libgdbm-dev libreadline-dev libncurses-dev libyaml-dev \
   libcurl4-openssl-dev zlib1g-dev libssl-dev libxml2-dev libxslt-dev sqlite3 libsqlite3-dev

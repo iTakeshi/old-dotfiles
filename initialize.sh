@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # check pre-script setup
 cat <<EOT
 Complete these 2 steps BEFORE you run this script.

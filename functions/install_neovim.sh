@@ -1,3 +1,5 @@
+#!/bin/sh
+
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo aptitude update
 sudo aptitude install neovim

@@ -62,6 +62,10 @@ brew install caskroom/cask/brew-cask
 # other utility softwares
 sudo aptitude -y install asunder banshee ibus-mozc gimp inkscape rar
 
+# Use CapsLock key as extra Ctrl
+dconf reset /org/gnome/settings-daemon/plugins/keyboard/active
+dconf write /org/gnome/desktop/input-sources/xkb-options "['ctrl:nocaps']"
+
 # reboot
 cat <<EOT
 Your computer has been Successfully initialized! Yay!!

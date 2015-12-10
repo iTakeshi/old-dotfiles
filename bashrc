@@ -139,3 +139,8 @@ man() {
     LESS_TERMCAP_us=$(printf "\e[1;32m") \
     man "$@"
 }
+
+# added by Anaconda 2.3.0 installer
+export PATH="/home/itakeshi/anaconda/bin:$PATH"
+
+export XDG_CONFIG_HOME="$HOME/.config"

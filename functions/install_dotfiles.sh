@@ -7,9 +7,10 @@ if [ ! -d ~/.vim ]
 then
   ln -sf ~/dotfiles/vim ~/.vim
 fi
-if [ ! -d ~/.nvim ]
+
+if [ ! -d ~/.config/nvim ]
 then
-  ln -sf ~/dotfiles/vim ~/.nvim
+  ln -sf ~/dotfiles/vim ~/.config/nvim
 fi
 
 if [ ! -d ~/.fonts ]
@@ -18,7 +19,6 @@ then
 fi
 
 ln -sf ~/dotfiles/vimrc ~/.vimrc
-ln -sf ~/dotfiles/vimrc ~/.nvimrc
 ln -sf ~/dotfiles/bashrc ~/.bashrc
 ln -sf ~/dotfiles/bash_profile ~/.bash_profile
 ln -sf ~/dotfiles/gemrc ~/.gemrc
@@ -31,6 +31,5 @@ if [ -e /usr/bin/skype ]
 then
   ln -sf ~/dotfiles/applications/skype.desktop ~/.config/autostart/skype.desktop
 fi
-ln -sf ~/dotfiles/applications/apply-xmodmap.desktop ~/.config/autostart/apply-xmodmap.desktop
 
-sh ~/dotfiles/gnome_terminal.sh
+sh ~/dotfiles/functions/gnome_terminal.sh

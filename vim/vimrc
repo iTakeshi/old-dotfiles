@@ -1,10 +1,9 @@
 "
 " Neovim configuration
-" Author:   iTakeshi
 " Platform: Linux
 "
 " Acknowledgements
-" This configuration is greatly inspired by lambdalisue's one.
+" This configuration is based on lambdalisue's one
 " https://github.com/lambdalisue/rook
 "
 
@@ -15,18 +14,28 @@ augroup END
 set all&          " reset all settings
 
 " edit this configuration file
-nmap <F3> :<C-u>vsp<CR>:e $MYVIMRC<CR>
+nnoremap <F3> :<C-u>call <SID>edit_vimrc()<CR>
+if has('vim_starting')
+  function s:edit_vimrc() abort
+    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1 && expand("%") == ""
+      edit $MYVIMRC
+    else
+      vsplit
+      edit $MYVIMRC
+    endif
+  endfunction
+endif
 
 " automatically reload this configuration file when saving this file
-if has('vim_starting') 
-  function s:reload_init_vim() abort
+if has('vim_starting')
+  function s:reload_vimrc() abort
     execute printf('source %s', $MYVIMRC)
     redraw
-    echo 'init.vim has been reloaded.'
+    echo 'vimrc/init.vim has been reloaded.'
   endfunction
 endif
 augroup MyAutoCmd
-  autocmd BufWritePost $MYVIMRC call s:reload_init_vim()
+  autocmd BufWritePost $MYVIMRC call s:reload_vimrc()
 augroup END
 
 " disable unnecessary default plugins
@@ -88,9 +97,10 @@ if has('multi_byte')
 endif
 
 " search {{{
+set ignorecase       " ignore case
 set smartcase        " override the ignorecase if the search pattern contains upper case characters
 set incsearch        " use incremental search
-set nowrapscan       " do not wrap scan
+set wrapscan         " when hit to bottom, scan from the top
 set hlsearch         " highlight found terms
 
 " K to search the help with the cursor word
@@ -118,7 +128,7 @@ set copyindent    " copy the structure of the existing lines indent when autoind
 
 " every wrapped line will continue visually indented
 if has('&breakindent')
-  set breakindent 
+  set breakindent
 endif
 
 set hidden            " hide the buffer instead of close
@@ -185,6 +195,9 @@ set nowrap                " wrap long text
 set textwidth=0           " do not automatically break
 set breakat=\ \ ;:,!?     " characters which might cause a line break
 
+" enable to move to next/previous line by h/l/<BS>
+set whichwrap+=h,l,<,>,[,],b,s,~
+
 " do not display greeting message
 set shortmess=aTI
 
@@ -244,9 +257,6 @@ nnoremap <C-p> "0p
 
 " vv to select the line, like yy, dd
 nnoremap vv 0v$
-
-" V to select until the end of line
-nnoremap V v$
 
 " window navigation
 nnoremap <C-h> <C-w>h
@@ -386,7 +396,7 @@ function! s:mkview() abort
   if s:is_view_available()
     silent! mkview
   endif
-endfunction " }}}
+endfunction
 function! s:loadview() abort
   if s:is_view_available()
     silent! loadview
@@ -449,3 +459,6 @@ highlight MyZenkakuSpace
 " }}}
 
 colorscheme desertEx
+
+" source rc/plugin.vim
+

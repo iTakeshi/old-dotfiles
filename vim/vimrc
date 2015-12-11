@@ -138,11 +138,21 @@ set autoread          " automatically read the changed contents
 " store cursor, folds, slash, unix on view
 set viewoptions=cursor,folds,slash,unix
 
+" change default view directory
+let &viewdir = dotfile_util#normpath('view', 'data')
+if !isdirectory(&viewdir)
+  call mkdir(&viewdir, 'p', 0700)
+endif
+
 " use external clipboard tool
 set clipboard=unnamedplus
 
 " keep undo history on undofile
 if has('persistent_undo')
+  let &undodir = dotfile_util#normpath('undo', 'data')
+  if !isdirectory(&undodir)
+    call mkdir(&undodir, 'p', 0700)
+  endif
   set undofile
 endif
 
@@ -460,5 +470,6 @@ highlight MyZenkakuSpace
 
 colorscheme desertEx
 
-" source rc/plugin.vim
+call dotfile_util#source(
+      \ dotfile_util#normpath('rc' . g:pathsep . 'plugin.vim', 'config'))
 

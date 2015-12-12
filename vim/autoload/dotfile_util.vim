@@ -1,25 +1,25 @@
-let s:is_windows = 0 " placeholder
-let s:is_macosx  = 0 " placeholder
-let s:is_linux   = !s:is_windows && !s:is_macosx
-let s:is_neovim  = has('nvim')
-let s:delimiter  = s:is_windows ? ';' : ':'
-let g:pathsep    = s:is_windows ? '\\' : '/'
-let s:homepath   = expand($HOME)
+let g:is_windows = 0 " placeholder
+let g:is_macosx  = 0 " placeholder
+let g:is_linux   = !g:is_windows && !g:is_macosx
+let g:is_neovim  = has('nvim')
+let g:delimiter  = g:is_windows ? ';' : ':'
+let g:pathsep    = g:is_windows ? '\\' : '/'
+let g:homepath   = expand($HOME)
 
-if s:is_neovim
-  let s:config_root = s:homepath . g:pathsep . '.config' . g:pathsep . 'nvim'
+if g:is_neovim
+  let g:config_root = g:homepath . g:pathsep . '.config' . g:pathsep . 'nvim'
 else
-  let s:config_root = s:homepath . g:pathsep . '.vim'
+  let g:config_root = g:homepath . g:pathsep . '.vim'
 endif
 
-if s:is_linux
-  let s:data_root = s:homepath . g:pathsep . '.local' . g:pathsep . 'share'
-  let s:data_root = s:data_root . g:pathsep . (s:is_neovim ? 'nvim' : 'vim')
+if g:is_linux
+  let g:data_root = g:homepath . g:pathsep . '.local' . g:pathsep . 'share'
+  let g:data_root = g:data_root . g:pathsep . (g:is_neovim ? 'nvim' : 'vim')
 else
   " TODO windows configuration
 end
 
-if s:is_windows
+if g:is_windows
   function! dotfile_util#is_abspath(path) abort
     return a:path =~# '\v^[A-Z]:\\'
   endfunction
@@ -38,9 +38,9 @@ function! dotfile_util#normpath(path, type) abort
         \ ? a:path
         \ : fnamemodify(a:path, ':~:.')
   if a:type =~ 'c\%[onfig]'
-    let typeroot = s:config_root
+    let typeroot = g:config_root
   elseif a:type =~ 'd\%[ata]'
-    let typeroot = s:data_root
+    let typeroot = g:data_root
   endif
   return typeroot . g:pathsep . relpath
 endfunction

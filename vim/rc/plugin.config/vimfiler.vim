@@ -9,6 +9,8 @@ function! s:hooks.on_source(bundle)
   function! s:vimfiler_settings()
     " use R to refresh
     nmap <buffer> R <Plug>(vimfiler_redraw_screen)
+    " overwrite C-l ignore <Plug>(vimfiler_redraw_screen)
+    nmap <buffer> <C-l> <C-w>l
   endfunction
 endfunction
 

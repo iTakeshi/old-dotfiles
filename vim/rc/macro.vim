@@ -1,28 +1,6 @@
 " save the file as root with 'sudo"
 cabbr w!! w !sudo tee > /dev/null %
 
-" save and restore the cursor position and folding level
-function! s:is_view_available() abort
-  if !&buflisted || &buftype !=# ''
-    return 0
-  elseif !filewritable(expand('%:p'))
-    return 0
-  endif
-  return 1
-endfunction
-function! s:mkview() abort
-  if s:is_view_available()
-    silent! mkview
-  endif
-endfunction
-function! s:loadview() abort
-  if s:is_view_available()
-    silent! loadview
-  endif
-endfunction
-autocmd MyAutoCmd BufWinLeave ?* call s:mkview()
-autocmd MyAutoCmd BufReadPost ?* call s:loadview()
-
 " automatically create missing directories
 autocmd MyAutoCmd BufWritePre * call s:makedirs(expand('<afile>:p:h'), v:cmdbang)
 function! s:makedirs(dir, force) abort

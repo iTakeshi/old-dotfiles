@@ -20,7 +20,7 @@ function! s:install_neobundle() abort
     echohl None
     return 1
   endif
-  
+
   if g:is_linux
     let vimproc_build_cmd = 'make'
   endif

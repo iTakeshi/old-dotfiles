@@ -5,6 +5,10 @@
 [[plugins]]
 repository = 'banyan/recognize_charcode.vim'
 
+# save and restore cursor position and folding
+[[plugins]]
+repository = 'vim-scripts/restore_view.vim'
+
 # tag window
 [[plugins]]
 repository = 'majutsushi/tagbar'

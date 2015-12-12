@@ -28,4 +28,6 @@ augroup filetypedetect
   au BufNewFile,BufRead *.pegjs setf pegjs
   " Julia
   au BufNewFile,BufRead *.jl setf julia
+  " Scala
+  au BufNewFile,BufRead *.scala setf scala
 augroup END

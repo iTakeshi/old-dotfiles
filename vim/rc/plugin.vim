@@ -40,16 +40,14 @@ endfunction
 
 function! s:configure_neobundle() abort
   call neobundle#begin(s:bundle_root)
-  if neobundle#load_cache()
-    NeoBundleFetch 'Shougo/neobundle.vim'
-    NeoBundle 'Shougo/unite.vim'
-    NeoBundle 'Shougo/vimproc.vim', { 'build': { 'linux': 'make' } }
-    call neobundle#load_toml(
-        \ dotfile_util#normpath('rc' . g:pathsep . 'plugin.define.toml', 'config'), { })
-    NeoBundleSaveCache
-  endif
-  call dotfile_util#source(dotfile_util#normpath('rc' . g:pathsep . 'plugin.config.vim', 'config'))
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/vimproc.vim', { 'build': { 'linux': 'make' } }
+  call neobundle#load_toml(
+      \ dotfile_util#normpath('rc' . g:pathsep . 'plugin.define.toml', 'config'), { })
   call neobundle#end()
+
+  call dotfile_util#source(dotfile_util#normpath('rc' . g:pathsep . 'plugin.config.vim', 'config'))
 
   filetype plugin indent on
   syntax on

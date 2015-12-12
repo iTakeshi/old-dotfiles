@@ -25,7 +25,8 @@ sudo apt-get install aptitude
 
 # install fundamental tools
 sudo aptitude -y install \
-  build-essential curl autoconf automake lv python-software-properties sqlite3
+  build-essential curl autoconf automake lv python-software-properties sqlite3 \
+  compizconfig-settings-manager compiz-plugins-extra
 
 # install 3rd party softwares
 sudo sed -i -e "s/^# \(.* partner\)$/\1/g" /etc/apt/sources.list
@@ -51,15 +52,6 @@ sh install_dotfiles.sh
 cd ~/dotfiles
 sh install_ruby.sh
 sh install_neovim.sh
-
-# install linuxbrew
-sudo aptitude -y install \
-  build-essential curl m4 texinfo libbz2-dev libcurl4-openssl-dev \
-  libexpat-dev libncurses-dev zlib1g-dev
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
-brew install caskroom/cask/brew-cask
-
-# install brew packages
 
 # other utility softwares
 sudo aptitude -y install asunder banshee ibus-mozc gimp inkscape rar

@@ -39,15 +39,26 @@ function! s:install_neobundle() abort
 endfunction
 
 function! s:configure_neobundle() abort
+  " begin configuration block
   call neobundle#begin(s:bundle_root)
-  NeoBundleFetch 'Shougo/neobundle.vim'
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'Shougo/vimproc.vim', { 'build': { 'linux': 'make' } }
-  call neobundle#load_toml(
-      \ dotfile_util#normpath('rc' . g:pathsep . 'plugin.define.toml', 'config'), { })
-  call neobundle#end()
 
+  " manage completion plugins
+  if g:is_neovim && has("python3")
+    NeoBundle 'Shougo/deoplete.nvim'
+  elseif has('lua') && ( (v:version == 703 && has('patch885')) || v:version >= 704 )
+    NeoBundle 'Shougo/neocomplete.vim'
+  else
+    NeoBundle 'Shougo/neocomplecache.vim'
+  endif
+
+  " other plugins
+  call neobundle#load_toml(dotfile_util#normpath('rc' . g:pathsep . 'plugin.define.toml', 'config'), { })
+
+  " plugin configurations
   call dotfile_util#source(dotfile_util#normpath('rc' . g:pathsep . 'plugin.config.vim', 'config'))
+
+  " end configuration block
+  call neobundle#end()
 
   filetype plugin indent on
   syntax on

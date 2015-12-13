@@ -54,7 +54,7 @@ highlight MyZenkakuSpace
 
 " automaticaly remove trailing whitespaces
 function! s:remove_trailing_whitespace() abort
-  let whitespace_ignored_filetypes = ['markdown']
+  let whitespace_ignored_filetypes = ['markdown', 'unite']
   for ft in whitespace_ignored_filetypes
     if ft ==# &filetype
       return 0

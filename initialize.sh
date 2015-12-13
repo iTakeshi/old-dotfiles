@@ -26,7 +26,9 @@ sudo apt-get install aptitude
 # install fundamental tools
 sudo aptitude -y install \
   build-essential curl autoconf automake lv python-software-properties sqlite3 \
-  compizconfig-settings-manager compiz-plugins-extra
+  exuberant-ctags global compizconfig-settings-manager compiz-plugins-extra \
+  python3 python-pip python3-pip
+sudo pip install pygments
 
 # install 3rd party softwares
 sudo sed -i -e "s/^# \(.* partner\)$/\1/g" /etc/apt/sources.list

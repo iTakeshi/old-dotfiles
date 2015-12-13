@@ -4,6 +4,9 @@ sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo aptitude update
 sudo aptitude install neovim
 
+sudo pip install neovim
+sudo pip3 install neovim
+
 # use neovim instead of vi and vim, as a default editor
 sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
 sudo update-alternatives --config vi

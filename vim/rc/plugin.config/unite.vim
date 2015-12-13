@@ -3,9 +3,7 @@ function! hooks.on_source(bundle)
   " start unite in normal mode
   let g:unite_enable_start_insert = 1
 
-  " use vimfiler to open files and directories
-  call unite#custom_default_action('file',          'vimfiler')
-  call unite#custom_default_action('file_mru',      'vimfiler')
+  " use vimfiler to open directories
   call unite#custom_default_action('directory',     'vimfiler')
   call unite#custom_default_action('directory_mru', 'vimfiler')
 

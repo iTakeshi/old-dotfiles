@@ -1,9 +1,9 @@
-let hooks = neobundle#get_hooks('deoplete.vim')
+let hooks = neobundle#get_hooks('deoplete.nvim')
 function! hooks.on_source(bundle)
   " Disable AutoComplPop.
   let g:acp_enableAtStartup = 0
   " Use deoplete
-  let g:deoplete#eneble_at_startup = 1
+  let g:deoplete#enable_at_startup = 1
   " Use smartcase.
   let g:deoplete_enable_smart_case = 1
 endfunction

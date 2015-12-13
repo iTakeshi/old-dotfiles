@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Exec=/usr/bin/xmodmap /home/itakeshi/.Xmodmap
-Name=Apply Xmodmap
-X-GNOME-Autostart-enabled=true

@@ -14,8 +14,8 @@ ruby_major=2
 ruby_minor=2
 ruby_teeny=0
 
-ruby_folder="ruby-${ruby_major}.${ruby_minor}.${ruby_teeny}"
-ruby_tar="${ruby_folder}.tar.gz"
+ruby_dir="ruby-${ruby_major}.${ruby_minor}.${ruby_teeny}"
+ruby_tar="${ruby_dir}.tar.gz"
 ruby_url="http://cache.ruby-lang.org/pub/ruby/${ruby_major}.${ruby_minor}/${ruby_tar}"
 
 checksum=""
@@ -29,7 +29,7 @@ done
 
 tar -xf $ruby_tar
 rm $ruby_tar
-cd $ruby_folder
+cd $ruby_dir
 ./configure
 make
 sudo make install

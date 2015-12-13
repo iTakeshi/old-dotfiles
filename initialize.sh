@@ -50,10 +50,11 @@ git clone git@github.com:itakeshi/dotfiles.git --depth 1
 cd ~/dotfiles
 sh install_dotfiles.sh
 
-# install ruby and neovim
+# install ruby, neovim, and gtags
 cd ~/dotfiles
 sh install_ruby.sh
 sh install_neovim.sh
+sh install_gtags.sh
 
 # other utility softwares
 sudo aptitude -y install asunder banshee ibus-mozc gimp inkscape rar

@@ -68,7 +68,7 @@ function! s:configure_neobundle() abort
   filetype plugin indent on
   syntax on
 
-  " Unite neobundle/install -auto-quit
+  NeoBundleCheck
 
   if !has('vim_starting')
     call neobundle#call_hook('on_source')

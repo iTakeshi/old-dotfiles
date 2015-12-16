@@ -144,3 +144,8 @@ man() {
 export PATH="/home/itakeshi/anaconda/bin:$PATH"
 
 export XDG_CONFIG_HOME="$HOME/.config"
+
+if type nvim >/dev/null 2>&1;
+then
+    alias vimdiff='nvim -d'
+fi

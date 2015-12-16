@@ -39,12 +39,6 @@ function! hooks.on_source(bundle)
   nnoremap <silent> [toggle]g :<C-u>GundoToggle<CR>
 endfunction
 
-" hier
-let hooks = neobundle#get_hooks('vim-hier')
-function! hooks.on_source(bundle)
-  nmap <silent> <Esc><Esc> :<C-u>noh<CR>:<C-u>HierClear<CR>
-endfunction
-
 " echodoc
 let hooks = neobundle#get_hooks('echodoc.vim')
 function! hooks.on_source(bundle)

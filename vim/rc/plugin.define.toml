@@ -66,9 +66,9 @@ repository = 'junegunn/vim-easy-align'
 [[plugins]]
 repository = 'sjl/gundo.vim'
 
-# highlight quickfix errors
+# async :make
 [[plugins]]
-repository = 'cohama/vim-hier'
+repository = 'benekastah/neomake'
 
 # insert snippet
 [[plugins]]

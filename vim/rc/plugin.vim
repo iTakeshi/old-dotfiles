@@ -41,11 +41,11 @@ endfunction
 function! s:configure_neobundle() abort
   call neobundle#begin(s:bundle_root)
 
-  if neobundle#load_cache([
+  if neobundle#load_cache(
         \ $MYVIMRC,
         \ dotfile_util#normpath('rc' . g:pathsep . 'plugin.vim', 'config'),
         \ dotfile_util#normpath('rc' . g:pathsep . 'plugin.define.toml', 'config'),
-        \])
+        \ )
     " manage completion plugins
     if g:is_neovim && has("python3")
       NeoBundle 'Shougo/deoplete.nvim'

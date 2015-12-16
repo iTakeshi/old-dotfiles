@@ -1,3 +1,4 @@
+# TODO syntax checker like neomake/syntastic
 # NOTE: neocomplcache/neocomplete/deoplete are managed in plugin.vim
 
 # neobundle itself
@@ -69,17 +70,42 @@ repository = 'sjl/gundo.vim'
 [[plugins]]
 repository = 'cohama/vim-hier'
 
-
-
-
-
-
-
+# insert snippet
 [[plugins]]
-repository = 'Shougo/neco-syntax'
+repository = 'Shougo/neosnippet.vim'
+depends = ['Shougo/neosnippet-snippets', 'Shougo/context_filetype.vim']
 
+# show document in echo area
 [[plugins]]
-repository = 'Shougo/neco-vim'
+repository = 'Shougo/echodoc.vim'
+
+# improve incremental search
+[[plugins]]
+repository = 'haya14busa/incsearch.vim'
+
+# show the number of hit words
+[[plugins]]
+repository = 'osyo-manga/vim-anzu'
+
+# show hit words and substitutions
+[[plugins]]
+repository = 'osyo-manga/vim-over'
+
+# improve '.'
+[[plugins]]
+repository = 'kana/vim-repeat'
+
+# improve diff mode
+[[plugins]]
+repository = 'lambdalisue/vim-improve-diff'
+
+# improve diff mode with git
+[[plugins]]
+repository = 'lambdalisue/vim-unified-diff'
+external_commands = 'git'
+
+# neocomplcache/neocomplete/deoplete extensions {{{
+# -----------------------------------------------------------------------------
 
 [[plugins]]
 repository = 'Shougo/neoinclude.vim'
@@ -89,68 +115,11 @@ repository = 'ujihisa/neco-look'
 external_commands = 'look'
 
 [[plugins]]
-repository = 'eagletmt/neco-ghc'
-external_commands = 'ghc-mod'
-on_source = ['neocomplete.vim', 'deoplete.nvim']
+repository = 'Shougo/neco-syntax'
 
 [[plugins]]
-repository = 'hrsh7th/vim-neco-calc'
-on_source = ['neocomplete.vim', 'deoplete.nvim']
-
-[[plugins]]
-repository = 'Shougo/neosnippet.vim'
-depends = [
-    'Shougo/neosnippet-snippets',
-    'Shougo/context_filetype.vim',
-]
-
-[[plugins]]
-repository = 'Shougo/echodoc.vim'
-insert = 1
-
-[[plugins]]
-repository = 'thinca/vim-template'
-lazy = 0
-
-[[plugins]]
-repository = 'lambdalisue/vim-unified-diff'
-external_commands = 'git'
-lazy = 0
-
-[[plugins]]
-repository = 'lambdalisue/vim-improve-diff'
-lazy = 0
-
-[[plugins]]
-repository = 'powerman/vim-plugin-AnsiEsc'
-lazy = 0
-
-[[plugins]]
-repository = 'osyo-manga/vim-over'
-lazy = 0
-
-[[plugins]]
-repository = 'kana/vim-repeat'
-mappings = '<Plug>(repeat-'
-
-[[plugins]]
-repository = 't9md/vim-quickhl'
-depends = 'kana/vim-operator-user'
-mappings = [
-    '<Plug>(quick-manual',
-    '<Plug>(operator-quickhl-manual'
-]
-
-[[plugins]]
-repository = 'tyru/open-browser.vim'
-mappings = '<Plug>(openbrowser-'
-
-[[plugins]]
-repository = 'haya14busa/incsearch.vim'
-mappings = '<Plug>(incsearch-'
-focus = 1
-
-
+repository = 'Shougo/neco-vim'
+# }}}
 
 # Unite sources {{{
 # -----------------------------------------------------------------------------

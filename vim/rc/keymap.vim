@@ -35,6 +35,9 @@ nnoremap Y y$
 " <C-p> to paste from 0 register
 nnoremap <C-p> "0p
 
+" paste in insert mode
+inoremap <C-S-p> <C-o>p
+
 " vv to select the line, like yy, dd
 nnoremap vv 0v$
 

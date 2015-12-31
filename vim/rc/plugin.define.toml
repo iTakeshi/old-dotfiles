@@ -79,10 +79,6 @@ depends = ['Shougo/neosnippet-snippets', 'Shougo/context_filetype.vim']
 [[plugins]]
 repository = 'Shougo/echodoc.vim'
 
-# improve incremental search
-[[plugins]]
-repository = 'haya14busa/incsearch.vim'
-
 # show the number of hit words
 [[plugins]]
 repository = 'osyo-manga/vim-anzu'

@@ -58,24 +58,6 @@ if neobundle#tap('echodoc.vim')
   call neobundle#untap()
 endif
 
-" incsearch
-if neobundle#tap('incsearch.vim')
-  function! neobundle#hooks.on_source(bundle) abort
-    map /  <Plug>(incsearch-forward)
-    map ?  <Plug>(incsearch-backward)
-    map g/ <Plug>(incsearch-stay)
-
-    function! s:noregexp(pattern) abort
-      return '\V' . escape(a:pattern, '\')
-    endfunction
-    function! s:config() abort
-      return {'converters': [function('s:noregexp')]}
-    endfunction
-    noremap <silent><expr> z/ incsearch#go(<SID>config())
-  endfunction
-  call neobundle#untap()
-endif
-
 " vim-anzu
 if neobundle#tap('vim_anzu')
   function! neobundle#hooks.on_source(bundle) abort
@@ -87,6 +69,22 @@ endif
 " unified-diff
 if neobundle#tap('vim-unified-diff')
   function! neobundle#hooks.on_source(bundle) abort
+    set diffexpr=unified_diff#diffexpr()
+  endfunction
+  call neobundle#untap()
+endif
+
+" unified-diff
+if neobundle#tap('vim-unified-diff') && executable('git')
+  function! neobundle#hooks.on_source(bundle) abort
+    let unified_diff#arguments = [
+          \   'diff',
+          \   '--no-index',
+          \   '--no-color',
+          \   '--no-ext-diff',
+          \   '--unified=0',
+          \   '--histogram',
+          \ ]
     set diffexpr=unified_diff#diffexpr()
   endfunction
   call neobundle#untap()

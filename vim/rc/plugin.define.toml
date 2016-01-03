@@ -88,10 +88,6 @@ repository = 'Shougo/echodoc.vim'
 [[plugins]]
 repository = 'osyo-manga/vim-anzu'
 
-# improve '.'
-[[plugins]]
-repository = 'kana/vim-repeat'
-
 # improve diff mode
 [[plugins]]
 repository = 'lambdalisue/vim-improve-diff'
@@ -101,10 +97,6 @@ repository = 'lambdalisue/vim-improve-diff'
 repository = 'lambdalisue/vim-unified-diff'
 external_commands = 'git'
 
-# improve '.' repeat
-[[plugins]]
-repository = 'kana/vim-repeat'
-
 # vimshell
 [[plugins]]
 repository = 'Shougo/vimshell.vim'
@@ -112,6 +104,22 @@ repository = 'Shougo/vimshell.vim'
 # improve commit message editor
 [[plugins]]
 repository = 'rhysd/committia.vim'
+
+# comment in/out
+[[plugins]]
+repository = 'tyru/caw.vim'
+
+# parenthesis completion
+[[plugins]]
+repository = 'Raimondi/delimitMate'
+
+# highlight nearest tag pair
+[[plugins]]
+repository = 'Valloric/MatchTagAlways'
+
+# set background color for colorcodes
+[[plugins]]
+repository = 'gorodinskiy/vim-coloresque'
 
 # [[plugins]]
 # repository = 'thinca/vim-quickrun'
@@ -263,7 +271,7 @@ repository = 'osyo-manga/vim-textobj-multiblock'
 repository = 'rhysd/vim-textobj-word-column'
 # }}}
 
-# textobj {{{
+# operator {{{
 # -----------------------------------------------------------------------------
 
 [[plugins]]

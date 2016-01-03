@@ -91,19 +91,6 @@ if neobundle#tap('vim-unified-diff') && executable('git')
   call neobundle#untap()
 endif
 
-" repeat
-if neobundle#tap('vim-repeat')
-  function! neobundle#hooks.on_source(bundle) abort
-    nmap .     <Plug>(repeat-.)
-    nmap u     <Plug>(repeat-u)
-    nmap U     <Plug>(repeat-U)
-    nmap <C-r> <Plug>(repeat-<C-r>)
-    nmap g-    <Plug>(repeat-g-)
-    nmap g+    <Plug>(repeat-g+)
-  endfunction
-  call neobundle#untap()
-endif
-
 " operator-surround
 if neobundle#tap('vim-operator-surround')
   function! neobundle#hooks.on_source(bundle) abort
@@ -130,6 +117,15 @@ if neobundle#tap('committia.vim')
     function! g:committia_hooks.edit_open(info)
       setlocal spell
     endfunction
+  endfunction
+  call neobundle#untap()
+endif
+
+" caw
+if neobundle#tap('caw.vim')
+  function! neobundle#hooks.on_source(bundle) abort
+    nmap <Leader>c <Plug>(caw:i:toggle)
+    vmap <Leader>c <Plug>(caw:i:toggle)
   endfunction
   call neobundle#untap()
 endif

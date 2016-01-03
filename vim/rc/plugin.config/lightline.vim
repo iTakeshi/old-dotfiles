@@ -1,5 +1,3 @@
-" TODO: syntastic/neomake
-
 if neobundle#tap('lightline.vim')
   function! neobundle#hooks.on_source(bundle) abort
     let g:lightline = {
@@ -12,7 +10,7 @@ if neobundle#tap('lightline.vim')
       \   ],
       \   'right': [
       \     ['lineinfo'],
-      \     ['percent']
+      \     ['percent'],
       \     ['fileformat', 'fileencoding', 'filetype'],
       \   ],
       \ },
@@ -42,70 +40,123 @@ if neobundle#tap('lightline.vim')
       \ },
       \}
 
-    function! g:lightline.my.modified()
-    function! MyModified()
-      return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    " Note:
+    "   component_function cannot be a script local function so use
+    "   g:lightline.my namespace instead of s:
+    let g:lightline.my = {}
+
+    if !has('multi_byte') || $LANG ==# 'C'
+      let g:lightline.my.symbol_branch = ''
+      let g:lightline.my.symbol_readonly = '[RO]'
+      let g:lightline.my.symbol_modified = '*'
+      let g:lightline.my.symbol_not_modifiable = '#'
+    else
+      let g:lightline.my.symbol_branch = '⭠'
+      let g:lightline.my.symbol_readonly = '⭤'
+      let g:lightline.my.symbol_modified = '*'
+      let g:lightline.my.symbol_not_modifiable = '#'
+    endif
+
+    function! g:lightline.my.cwd() abort
+      return fnamemodify(getcwd(), ':~')
     endfunction
-    function! MyReadonly()
-      return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+
+    function! g:lightline.my.readonly() abort
+      return empty(&buftype) && &readonly ? g:lightline.my.symbol_readonly : ''
     endfunction
-    function! MyFilename()
-      let fname = expand('%:t')
-      return fname =~ '__Gundo' ? '' :
-            \ fname == '__Tagbar__' ? g:lightline.fname :
-            \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-            \ &ft == 'unite' ? unite#get_status_string() :
-            \ &ft == 'vimshell' ? vimshell#get_status_string() :
-            \ ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-            \ ('' != fname ? fname : '[No Name]') .
-            \ ('' != MyModified() ? ' ' . MyModified() : '')
+
+    function! g:lightline.my.modified() abort
+      return empty(&buftype) && &modified ? g:lightline.my.symbol_modified : ''
     endfunction
-    function! MyFugitive()
-      try
-        if expand('%:t') !~? 'Tagbar\|Gundo' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-          let mark = ''  " edit here for cool mark
-          let _ = fugitive#head()
-          return strlen(_) ? mark._ : ''
-        endif
-      catch
-      endtry
+
+    function! g:lightline.my.not_modifiable() abort
+      return empty(&buftype) && !&modifiable ? g:lightline.my.symbol_not_modifiable : ''
+    endfunction
+
+    function! g:lightline.my.filename() abort
+      if &filetype =~# '\v%(unite|vimfiler|vimshell\gundo)'
+        return {&filetype}#get_status_string()
+      elseif &filetype =~# '\v%(gita-blame-navi)'
+        let fname = winwidth(0) > 79 ? expand('%') : get(split(expand('%'), ':'), 2, 'NAVI')
+        return fname
+      else
+        let fname = winwidth(0) > 79 ? expand('%') : pathshorten(expand('%'))
+        let readonly = g:lightline.my.readonly()
+        let modified = g:lightline.my.modified()
+        let not_modifiable = g:lightline.my.not_modifiable()
+        return '' .
+              \ (empty(readonly) ? '' : readonly . ' ') .
+              \ (empty(fname) ? '[No name]' : fname) .
+              \ (empty(not_modifiable) ? '' : ' ' . not_modifiable) .
+              \ (empty(modified) ? '' : ' ' . modified)
+      endif
       return ''
     endfunction
-    function! MyFileformat()
-      return winwidth(0) > 70 ? &fileformat : ''
+
+    function! g:lightline.my.fileformat() abort
+        return winwidth(0) > 70 ? &fileformat : ''
     endfunction
-    function! MyFiletype()
+
+    function! g:lightline.my.filetype() abort
       return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
     endfunction
-    function! MyFileencoding()
-      return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+
+    function! g:lightline.my.fileencoding() abort
+      return winwidth(0) > 70 ? (strlen(&fileencoding) ? &fileencoding : &encoding) : ''
     endfunction
-    function! MyMode()
-      let fname = expand('%:t')
-      return fname == '__Gundo__' ? 'Gundo' :
-            \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-            \ fname == '__Tagbar__' ? 'Tagbar' :
-            \ &ft == 'unite' ? 'Unite' :
-            \ &ft == 'vimfiler' ? 'VimFiler' :
-            \ &ft == 'vimshell' ? 'VimShell' :
-            \ winwidth(0) > 60 ? lightline#mode() : ''
-    endfunction
-    function! MyCurrentTag()
-      return tagbar#currenttag('%s', '')
-    endfunction
-    function! TagbarStatusFunc(current, sort, fname, ...) abort
-        let g:lightline.fname = a:fname
-      return lightline#statusline(0)
-    endfunction
-    let g:tagbar_status_func = 'TagbarStatusFunc'
-    augroup AutoSyntastic
-      autocmd!
-      autocmd BufWritePost *.c,*.cpp call s:syntastic()
-    augroup END
-    function! s:syntastic()
-      SyntasticCheck
-      call lightline#update()
-    endfunction
+
+    if neobundle#is_installed('vim-gita') && executable('git')
+      function! g:lightline.my.gita_debug() abort
+        return neobundle#is_sourced('vim-gita')
+              \ ? gita#statusline#debug() : ''
+      endfunction
+      function! g:lightline.my.gita_branch() abort
+        return neobundle#is_sourced('vim-gita')
+              \ ? gita#statusline#preset('branch_short_fancy') : ''
+      endfunction
+      function! g:lightline.my.gita_traffic() abort
+        return neobundle#is_sourced('vim-gita')
+              \ ? gita#statusline#preset('traffic_fancy') : ''
+      endfunction
+      function! g:lightline.my.gita_status() abort
+        return neobundle#is_sourced('vim-gita')
+              \ ? gita#statusline#preset('status') : ''
+      endfunction
+    else
+      function! g:lightline.my.gita_debug() abort
+        return ''
+      endfunction
+      function! g:lightline.my.gita_branch() abort
+        return ''
+      endfunction
+      function! g:lightline.my.gita_traffic() abort
+        return ''
+      endfunction
+      function! g:lightline.my.gita_status() abort
+        return ''
+      endfunction
+    endif
+
+    if executable('git')
+      function! g:lightline.my.git_branch() abort
+        if neobundle#is_sourced('vimproc.vim')
+          let stdout = vimproc#system('git branch --no-color')
+        else
+          let stdout = system('git branch --no-color')
+        endif
+        if !empty(stdout)
+          let branch = get(matchlist(stdout, '\* \(\w\+\)'), 1, '')
+          return branch
+        else
+          return ''
+        endif
+      endfunction
+    else
+      function! g:lightline.my.git_branch() abort
+        return ''
+      endfunction
+    endif
+
     let g:unite_force_overwrite_statusline = 0
     let g:vimfiler_force_overwrite_statusline = 0
     let g:vimshell_force_overwrite_statusline = 0

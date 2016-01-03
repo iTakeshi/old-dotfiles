@@ -1,6 +1,7 @@
 let s:plugin_config_dir =
       \ dotfile_util#normpath('rc'. g:pathsep . 'plugin.config', 'config')
       \ . g:pathsep
+call dotfile_util#source(s:plugin_config_dir . 'lightline.vim')
 call dotfile_util#source(s:plugin_config_dir . 'complete.vim')
 call dotfile_util#source(s:plugin_config_dir . 'unite.vim')
 call dotfile_util#source(s:plugin_config_dir . 'vimfiler.vim')

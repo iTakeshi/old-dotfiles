@@ -3,6 +3,13 @@ if neobundle#tap('vimfiler')
     let g:vimfiler_as_default_explorer = 1
     let g:vimfiler_enable_auto_cd = 1
 
+    call vimfiler#custom#profile('default', 'context', {
+      \ 'split'    : 1,
+      \ 'winwidth' : 30,
+      \ 'no_quit'  : 1,
+      \ 'columns'  : 'devicons',
+      \ })
+
     " vimfiler specific key mappings
     autocmd MyAutoCmd FileType vimfiler call s:vimfiler_settings()
     function! s:vimfiler_settings()
@@ -19,7 +26,7 @@ if neobundle#tap('vimfiler')
     endfunction
 
     function! s:exec_vimfiler()
-      VimFiler -split -simple -winwidth=30 -no-quit
+      VimFiler
       setl nonumber
       execute('normal .')
     endfunction

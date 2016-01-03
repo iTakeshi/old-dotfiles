@@ -278,3 +278,7 @@ repository = 'rhysd/vim-operator-surround'
 [[plugins]]
 repository = 'haya14busa/vim-operator-flashy'
 # }}}
+
+# icons
+[[plugins]]
+repository = 'ryanoasis/vim-devicons'

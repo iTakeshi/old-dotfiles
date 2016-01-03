@@ -10,6 +10,7 @@ set nosplitbelow          " split to top
 set splitright            " vsplit to right
 set report=0              " report any changes
 set display=lastline      " display last line in a window AMAP
+set showtabline=2         " always show tabline"
 
 set nowrap                " wrap long text
 set textwidth=0           " do not automatically break

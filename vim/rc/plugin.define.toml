@@ -1,6 +1,11 @@
 # TODO syntax checker like neomake/syntastic
 # NOTE: neocomplcache/neocomplete/deoplete are managed in plugin.vim
 
+# save with sudo
+[[plugins]]
+repository = 'sudo.vim'
+lazy = 0
+
 # neobundle itself
 [[plugins]]
 repository = 'Shougo/neobundle.vim'
@@ -64,7 +69,7 @@ repository = 'junegunn/vim-easy-align'
 
 # undo history
 [[plugins]]
-repository = 'sjl/gundo.vim'
+repository = 'mbbill/undotree'
 
 # async :make
 [[plugins]]
@@ -83,10 +88,6 @@ repository = 'Shougo/echodoc.vim'
 [[plugins]]
 repository = 'osyo-manga/vim-anzu'
 
-# show hit words and substitutions
-[[plugins]]
-repository = 'osyo-manga/vim-over'
-
 # improve '.'
 [[plugins]]
 repository = 'kana/vim-repeat'
@@ -99,6 +100,26 @@ repository = 'lambdalisue/vim-improve-diff'
 [[plugins]]
 repository = 'lambdalisue/vim-unified-diff'
 external_commands = 'git'
+
+# improve '.' repeat
+[[plugins]]
+repository = 'kana/vim-repeat'
+
+# vimshell
+[[plugins]]
+repository = 'Shougo/vimshell.vim'
+
+# improve commit message editor
+[[plugins]]
+repository = 'rhysd/committia.vim'
+
+# [[plugins]]
+# repository = 'thinca/vim-quickrun'
+# [[plugins]]
+# repository = 'dannyob/quickfixstatus'
+# [[plugins]]
+# repository = 'KazuakiM/vim-qfstatusline'
+# depends = 'osyo-manga/shabadou.vim'
 
 # neocomplcache/neocomplete/deoplete extensions {{{
 # -----------------------------------------------------------------------------
@@ -163,9 +184,6 @@ repository = 'derekwyatt/vim-scala'
 repository = 'vim-ruby/vim-ruby'
 
 [[plugins]]
-repository = 'JuliaLang/julia-vim'
-
-[[plugins]]
 repository = 'iTakeshi/matlab.vim'
 
 [[plugins]]
@@ -191,4 +209,72 @@ repository = 'cakebaker/scss-syntax.vim'
 
 [[plugins]]
 repository = 'groenewege/vim-less'
+
+[[plugins]]
+repository = 'cespare/vim-toml'
+# }}}
+
+# textobj {{{
+# -----------------------------------------------------------------------------
+
+[[plugins]]
+repository = 'kana/vim-textobj-user'
+
+[[plugins]]
+repository = 'kana/vim-textobj-entire'
+
+[[plugins]]
+repository = 'kana/vim-textobj-line'
+
+[[plugins]]
+repository = 'kana/vim-textobj-syntax'
+
+[[plugins]]
+repository = 'kana/vim-textobj-indent'
+
+[[plugins]]
+repository = 'kana/vim-textobj-datetime'
+
+[[plugins]]
+repository = 'thinca/vim-textobj-comment'
+
+[[plugins]]
+repository = 'saihoooooooo/vim-textobj-space'
+
+[[plugins]]
+repository = 'kana/vim-textobj-fold'
+
+[[plugins]]
+repository = 'kana/vim-textobj-underscore'
+
+[[plugins]]
+repository = 'RyanMcG/vim-textobj-dash'
+
+[[plugins]]
+repository = 'mattn/vim-textobj-url'
+
+[[plugins]]
+repository = 'sgur/vim-textobj-parameter'
+
+[[plugins]]
+repository = 'osyo-manga/vim-textobj-multiblock'
+
+[[plugins]]
+repository = 'rhysd/vim-textobj-word-column'
+# }}}
+
+# textobj {{{
+# -----------------------------------------------------------------------------
+
+[[plugins]]
+repository = 'kana/vim-operator-user'
+
+[[plugins]]
+repository = 'kana/vim-operator-replace'
+
+[[plugins]]
+repository = 'rhysd/vim-operator-surround'
+
+[[plugins]]
+repository = 'haya14busa/vim-operator-flashy'
 # }}}

@@ -25,6 +25,9 @@ if neobundle#tap('vimfiler')
     endfunction
 
     function! s:exec_vimfiler_on_vimenter()
+      if bufexists('COMMIT_EDITMSG')
+        return 0
+      endif
       call s:exec_vimfiler()
       wincmd l
       if expand('%') == ''

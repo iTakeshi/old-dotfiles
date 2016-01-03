@@ -5,6 +5,14 @@ call dotfile_util#source(s:plugin_config_dir . 'complete.vim')
 call dotfile_util#source(s:plugin_config_dir . 'unite.vim')
 call dotfile_util#source(s:plugin_config_dir . 'vimfiler.vim')
 
+" sudo
+if neobundle#tap('sudo.vim')
+  function! neobundle#hooks.on_source(bundle) abort
+    cabbr w!! :w sudo:%
+  endfunction
+  call neobundle#untap()
+endif
+
 " tagbar
 if neobundle#tap('tagbar')
   function! neobundle#hooks.on_source(bundle) abort
@@ -37,14 +45,6 @@ if neobundle#tap('vim-easy-align')
   function! neobundle#hooks.on_source(bundle) abort
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
-  endfunction
-  call neobundle#untap()
-endif
-
-" Gundo
-if neobundle#tap('gundo.vim')
-  function! neobundle#hooks.on_source(bundle) abort
-    nnoremap <silent> [toggle]g :<C-u>GundoToggle<CR>
   endfunction
   call neobundle#untap()
 endif
@@ -86,6 +86,49 @@ if neobundle#tap('vim-unified-diff') && executable('git')
           \   '--histogram',
           \ ]
     set diffexpr=unified_diff#diffexpr()
+  endfunction
+  call neobundle#untap()
+endif
+
+" repeat
+if neobundle#tap('vim-repeat')
+  function! neobundle#hooks.on_source(bundle) abort
+    nmap .     <Plug>(repeat-.)
+    nmap u     <Plug>(repeat-u)
+    nmap U     <Plug>(repeat-U)
+    nmap <C-r> <Plug>(repeat-<C-r>)
+    nmap g-    <Plug>(repeat-g-)
+    nmap g+    <Plug>(repeat-g+)
+  endfunction
+  call neobundle#untap()
+endif
+
+" operator-surround
+if neobundle#tap('vim-operator-surround')
+  function! neobundle#hooks.on_source(bundle) abort
+    map <silent>sa <Plug>(operator-surround-append)
+    map <silent>sd <Plug>(operator-surround-delete)
+    map <silent>sr <Plug>(operator-surround-replace)
+  endfunction
+  call neobundle#untap()
+endif
+
+" operator-flashy
+if neobundle#tap('vim-operator-flashy')
+  function! neobundle#hooks.on_source(bundle) abort
+    map y <Plug>(operator-flashy)
+    nmap Y <Plug>(operator-flashy)$
+  endfunction
+  call neobundle#untap()
+endif
+
+" committia
+if neobundle#tap('committia.vim')
+  function! neobundle#hooks.on_source(bundle) abort
+    let g:committia_hooks = {}
+    function! g:committia_hooks.edit_open(info)
+      setlocal spell
+    endfunction
   endfunction
   call neobundle#untap()
 endif

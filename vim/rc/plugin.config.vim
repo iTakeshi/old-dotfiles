@@ -68,8 +68,16 @@ if neobundle#tap('vim_anzu')
 endif
 
 " unified-diff
-if neobundle#tap('vim-unified-diff')
+if neobundle#tap('vim-unified-diff') && executable('git')
   function! neobundle#hooks.on_source(bundle) abort
+    let unified_diff#arguments = [
+          \   'diff',
+          \   '--no-index',
+          \   '--no-color',
+          \   '--no-ext-diff',
+          \   '--unified=0',
+          \   '--histogram',
+          \ ]
     set diffexpr=unified_diff#diffexpr()
   endfunction
   call neobundle#untap()
@@ -129,3 +137,67 @@ if neobundle#tap('caw.vim')
   endfunction
   call neobundle#untap()
 endif
+
+" neosnippet
+if neobundle#tap('neosnippet.vim')
+  function! neobundle#hooks.on_source(bundle) abort
+    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k>     <Plug>(neosnippet_expand_target)
+    if has('conceal')
+      set conceallevel=2 concealcursor=niv
+    endif
+  endfunction
+  call neobundle#untap()
+endif
+
+" textobj-multiblock
+if neobundle#tap('vim-textobj-multiblock')
+  omap ab <Plug>(textobj-multiblock-a)
+  omap ib <Plug>(textobj-multiblock-i)
+  xmap ab <Plug>(textobj-multiblock-a)
+  xmap ib <Plug>(textobj-multiblock-i)
+  call neobundle#untap()
+endif
+
+" operator-replace
+if neobundle#tap('vim-operator-replace')
+  map gr <Plug>(operator-replace)
+  call neobundle#untap()
+endif
+
+" operator-surround
+if neobundle#tap('vim-operator-surround')
+  function! neobundle#hooks.on_source(bundle) abort
+    " add ```...``` surround when filetype is markdown
+    let g:operator#surround#blocks = {
+        \ 'markdown' : [
+        \   {
+        \     'block' : ['```\n', '\n```'],
+        \     'motionwise' : ['line'],
+        \     'keys' : ['`']
+        \   },
+        \ ]}
+  endfunction
+
+  map gsa <Plug>(operator-surround-append)
+  map gsd <Plug>(operator-surround-delete)
+  map gsr <Plug>(operator-surround-replace)
+
+  nmap gsdd
+        \ <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
+  nmap gsrr
+        \ <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+  vmap gsdd
+        \ <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
+  vmap gsrr
+        \ <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+  call neobundle#untap()
+endif
+
+" undotree
+if neobundle#tap('undotree') " {{{
+  nnoremap [toggle]u :<C-u>UndotreeToggle<CR>
+
+  call neobundle#untap()
+endif " }}}

@@ -6,6 +6,10 @@ let g:maplocalleader = ';'
 nnoremap ; <Nop>
 xnoremap ; <Nop>
 
+" move macro to Q and disable default q
+nnoremap Q q
+nnoremap q <Nop>
+
 " remap j and k to act as expected when used on long, wrapped, lines
 nnoremap j gj
 nnoremap k gk

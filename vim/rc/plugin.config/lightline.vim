@@ -1,7 +1,7 @@
 if neobundle#tap('lightline.vim')
   function! neobundle#hooks.on_source(bundle) abort
     let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'hybrid',
       \ 'active': {
       \   'left': [
       \     ['mode', 'paste'],

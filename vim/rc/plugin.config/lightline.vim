@@ -10,6 +10,7 @@ if neobundle#tap('lightline.vim')
       \   'right': [
       \     ['fileformat', 'fileencoding', 'filetype'],
       \     ['lineinfo'],
+      \     ['qfstatusline'],
       \   ],
       \ },
       \ 'inactive': {
@@ -41,6 +42,12 @@ if neobundle#tap('lightline.vim')
       \   'gita_branch':  'g:lightline.my.gita_branch',
       \   'gita_traffic': 'g:lightline.my.gita_traffic',
       \   'gita_status':  'g:lightline.my.gita_status',
+      \ },
+      \ 'component_expand': {
+      \   'qfstatusline': 'qfstatusline#Update',
+      \ },
+      \ 'component_type': {
+      \   'qfstatusline': 'error'
       \ },
       \}
 

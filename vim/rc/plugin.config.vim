@@ -196,8 +196,76 @@ if neobundle#tap('vim-operator-surround')
 endif
 
 " undotree
-if neobundle#tap('undotree') " {{{
+if neobundle#tap('undotree')
   nnoremap [toggle]u :<C-u>UndotreeToggle<CR>
 
   call neobundle#untap()
-endif " }}}
+endif
+
+if neobundle#tap('vim-quickrun')
+  function! neobundle#hooks.on_source(bundle) abort
+    let g:quickrun_config = get(g:, 'quickrun_config', {})
+    let g:quickrun_config['_'] = {
+          \ 'runner' : 'vimproc',
+          \ 'outputter/buffer/split': ':botright 8sp',
+          \ 'outputter/buffer/close_on_empty': 1,
+          \ 'hook/time/enable': 1,
+          \}
+    " Terminate the quickrun with <C-c>
+    nnoremap <expr><silent> <C-c> quickrun#is_running()
+          \ ? quickrun#sweep_sessions() : "\<C-c>"
+  endfunction
+
+  nnoremap <Plug>(my-quickrun) <Nop>
+  nmap <LocalLeader>r <Plug>(my-quickrun)
+  nmap <Plug>(my-quickrun) <Plug>(quickrun)
+
+  call neobundle#untap()
+endif
+
+" watchdogs
+if neobundle#tap('vim-watchdogs')
+  function! neobundle#hooks.on_source(bundle) abort
+    let g:watchdogs_check_CursorHold_enable = 0
+    let g:watchdogs_check_BufWritePost_enable = 1
+    let g:watchdogs_check_BufWritePost_enable_on_wq = 0
+
+    let g:quickrun_config = get(g:, 'quickrun_config', {})
+    let g:quickrun_config = extend(g:quickrun_config, {
+      \ 'watchdogs_checker/_': {
+      \   'runner/vimproc/updatetime': 40,
+      \   'outputter/quickfix/open_cmd': '',
+      \   'hook/qfstatusline_update/enable_exit': 1,
+      \   'hook/qfstatusline_update/priority_exit': 4,
+      \   'hook/qfsigns_update/enable_exit': 1,
+      \   'hook/qfsigns_update/priority_exit': 3,
+      \ }
+      \})
+    if executable('vint')
+      let g:quickrun_config['watchdogs_checker/vint'] = {
+            \ 'command': 'vint',
+            \ 'exec'   : '%c %o %s:p',
+            \}
+      let g:quickrun_config['vim/watchdogs_checker'] = {
+            \ 'type': 'watchdogs_checker/vint',
+            \}
+    endif
+    call watchdogs#setup(g:quickrun_config)
+  endfunction
+
+  call neobundle#untap()
+endif
+
+if neobundle#tap('vim-qfstatusline')
+  function! neobundle#hooks.on_source(bundle) abort
+    let g:Qfstatusline#UpdateCmd = function('lightline#update')
+  endfunction
+  call neobundle#untap()
+endif
+
+if neobundle#tap('vim-hier')
+  function! neobundle#hooks.on_source(bundle) abort
+    nnoremap <silent> <Esc><Esc> :<C-u>HierClear<CR>:nohlsearch<CR>
+  endfunction
+  call neobundle#untap()
+endif

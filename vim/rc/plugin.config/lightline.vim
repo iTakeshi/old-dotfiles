@@ -1,7 +1,7 @@
 if neobundle#tap('lightline.vim')
   function! neobundle#hooks.on_source(bundle) abort
     let g:lightline = {
-      \ 'colorscheme': 'hybrid',
+      \ 'colorscheme': 'jellybeans',
       \ 'active': {
       \   'left': [
       \     ['mode', 'paste'],
@@ -9,8 +9,7 @@ if neobundle#tap('lightline.vim')
       \   ],
       \   'right': [
       \     ['fileformat', 'fileencoding', 'filetype'],
-      \     ['lineinfo'],
-      \     ['qfstatusline'],
+      \     ['lineinfo', 'qfstatusline']
       \   ],
       \ },
       \ 'inactive': {
@@ -93,7 +92,7 @@ if neobundle#tap('lightline.vim')
         let fname = winwidth(0) > 79 ? expand('%') : get(split(expand('%'), ':'), 2, 'NAVI')
         return fname
       else
-        let fname = expand('%')
+        let fname = fnamemodify(expand('%'), ':~:.')
         let readonly       = g:lightline.my.readonly()
         let modified       = g:lightline.my.modified()
         let not_modifiable = g:lightline.my.not_modifiable()

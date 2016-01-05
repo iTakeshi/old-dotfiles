@@ -251,6 +251,8 @@ if neobundle#tap('vim-watchdogs')
             \}
     endif
     call watchdogs#setup(g:quickrun_config)
+
+    autocmd MyAutoCmd BufEnter * WatchdogsRun
   endfunction
 
   call neobundle#untap()
@@ -259,6 +261,7 @@ endif
 if neobundle#tap('vim-qfstatusline')
   function! neobundle#hooks.on_source(bundle) abort
     let g:Qfstatusline#UpdateCmd = function('lightline#update')
+    let g:Qfstatusline#Text = 0
   endfunction
   call neobundle#untap()
 endif

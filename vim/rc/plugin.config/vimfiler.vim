@@ -44,6 +44,8 @@ if neobundle#tap('vimfiler')
     command! ExecVimFiler :call s:exec_vimfiler()
     nnoremap <Leader>e :<C-u>ExecVimFiler<CR>
     autocmd MyAutoCmd VimEnter * call s:exec_vimfiler_on_vimenter()
+
+    nnoremap <silent> [toggle]f :<C-u>ExecVimFiler<CR>
   endfunction
   call neobundle#untap()
 endif

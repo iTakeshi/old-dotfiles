@@ -37,8 +37,6 @@ repository = 'lambdalisue/vim-gita'
 # cool status line
 [[plugins]]
 repository = 'itchyny/lightline.vim'
-[[plugins]]
-repository = 'cocopon/lightline-hybrid.vim'
 
 # visualize indent
 [[plugins]]

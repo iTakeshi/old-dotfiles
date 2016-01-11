@@ -60,3 +60,6 @@ highlight Special guifg=aquamarine2 gui=NONE ctermfg=122 cterm=NONE
 highlight Ignore guifg=grey40 gui=NONE ctermfg=241 cterm=NONE
 highlight Todo guifg=orangered guibg=yellow2 gui=NONE ctermfg=202 ctermbg=226 cterm=NONE
 
+highlight SpellBad guibg=gray30 ctermbg=240
+highlight SpellLocal guibg=gray30 ctermbg=240
+highlight SpellRare guibg=gray30 ctermbg=240

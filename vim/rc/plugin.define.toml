@@ -37,7 +37,6 @@ repository = 'lambdalisue/vim-gita'
 # cool status line
 [[plugins]]
 repository = 'itchyny/lightline.vim'
-depends = ['vim-gita']
 
 # visualize indent
 [[plugins]]
@@ -71,9 +70,21 @@ repository = 'junegunn/vim-easy-align'
 [[plugins]]
 repository = 'mbbill/undotree'
 
-# async :make
+# async syntax check
 [[plugins]]
-repository = 'benekastah/neomake'
+repository = 'thinca/vim-quickrun'
+[[plugins]]
+repository = 'osyo-manga/vim-watchdogs'
+[[plugins]]
+repository = 'dannyob/quickfixstatus'
+[[plugins]]
+repository = 'KazuakiM/vim-qfstatusline'
+[[plugins]]
+repository = 'KazuakiM/vim-qfsigns'
+[[plugins]]
+repository = 'osyo-manga/shabadou.vim'
+[[plugins]]
+repository = 'cohama/vim-hier'
 
 # insert snippet
 [[plugins]]

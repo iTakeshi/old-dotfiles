@@ -66,6 +66,7 @@ nnoremap <silent> [toggle]l :<C-u>setl list!<CR>:setl list?<CR>
 nnoremap <silent> [toggle]e :<C-u>setl expandtab!<CR>:setl expandtab?<CR>
 nnoremap <silent> [toggle]w :<C-u>setl wrap!<CR>:setl wrap?<CR>
 nnoremap <silent> [toggle]p :<C-u>setl paste!<CR>:setl paste?<CR>
+nnoremap <silent> [toggle]q :<C-u>copen<CR>
 
 " tag navigation
 nnoremap [t  :<C-u>tprevious<CR>

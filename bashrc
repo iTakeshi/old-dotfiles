@@ -149,3 +149,6 @@ if type nvim >/dev/null 2>&1;
 then
     alias vimdiff='nvim -d'
 fi
+
+# added by Anaconda3 2.4.1 installer
+export PATH="/home/itakeshi/anaconda3/bin:$PATH"

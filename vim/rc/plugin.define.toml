@@ -79,8 +79,8 @@ repository = 'osyo-manga/vim-watchdogs'
 repository = 'dannyob/quickfixstatus'
 [[plugins]]
 repository = 'KazuakiM/vim-qfstatusline'
-[[plugins]]
-repository = 'KazuakiM/vim-qfsigns'
+#[[plugins]]
+#repository = 'KazuakiM/vim-qfsigns'
 [[plugins]]
 repository = 'osyo-manga/shabadou.vim'
 [[plugins]]

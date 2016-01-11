@@ -227,7 +227,14 @@ endif
 if neobundle#tap('vim-watchdogs')
   function! neobundle#hooks.on_source(bundle) abort
     let g:watchdogs_check_CursorHold_enable = 0
-    let g:watchdogs_check_BufWritePost_enable = 1
+    let g:watchdogs_check_BufWritePost_enable = 0
+    let g:watchdogs_check_BufWritePost_enables = {
+      \ 'vim': 1,
+      \ 'python': 1,
+      \ 'javascript': 1,
+      \ 'scala': 1,
+      \ 'ruby': 1,
+      \}
     let g:watchdogs_check_BufWritePost_enable_on_wq = 0
 
     let g:quickrun_config = get(g:, 'quickrun_config', {})
@@ -250,9 +257,23 @@ if neobundle#tap('vim-watchdogs')
             \ 'type': 'watchdogs_checker/vint',
             \}
     endif
+    if executable('flake8')
+      let g:quickrun_config['watchdogs_checker/pyflakes'] = {
+          \ 'command': 'flake8',
+          \}
+    endif
     call watchdogs#setup(g:quickrun_config)
 
-    autocmd MyAutoCmd BufEnter * WatchdogsRun
+    function! s:run_watchdogs() abort
+      for l:ft in keys(g:watchdogs_check_BufWritePost_enables)
+        if l:ft == &filetype
+          WatchdogsRun
+          return 0
+        endif
+      endfor
+      return 0
+    endfunction
+    autocmd MyAutoCmd BufEnter * call s:run_watchdogs()
   endfunction
 
   call neobundle#untap()

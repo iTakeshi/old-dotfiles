@@ -1,4 +1,4 @@
-let s:bundle_root    = dotfile_util#normpath('bundle', 'config')
+let s:bundle_root    = g:util#normpath('bundle', 'config')
 let s:neobundle_root = s:bundle_root . g:pathsep . 'neobundle.vim'
 let s:unite_root     = s:bundle_root . g:pathsep . 'unite.vim'
 let s:vimproc_root   = s:bundle_root . g:pathsep . 'vimproc.vim'
@@ -22,29 +22,29 @@ function! s:install_neobundle() abort
   endif
 
   if g:is_linux
-    let vimproc_build_cmd = 'make'
+    let l:vimproc_build_cmd = 'make'
   endif
 
   redraw | echo 'Installing neobundle.vim, unite.vim, and vimproc.vim ...'
   call system(printf('git clone --depth 1 %s %s', s:neobundle_url, s:neobundle_root))
   call system(printf('git clone --depth 1 %s %s', s:unite_url,     s:unite_root))
   call system(printf('git clone --depth 1 %s %s', s:vimproc_url,   s:vimproc_root))
-  let currentdir = system('pwd')
+  let l:currentdir = system('pwd')
   execute(printf('cd %s', s:vimproc_root))
   echo system('pwd')
-  call system(vimproc_build_cmd)
-  execute(printf('cd %s', currentdir))
+  call system(l:vimproc_build_cmd)
+  execute(printf('cd %s', l:currentdir))
   redraw | echo 'neobundle.vim, unite.vim, and vimproc.vim were installed. continue to install other plugins...'
   return 0
 endfunction
 
 function! s:configure_neobundle() abort
-  call neobundle#begin(s:bundle_root)
+  call g:neobundle#begin(s:bundle_root)
 
-  if neobundle#load_cache(
+  if g:neobundle#load_cache(
         \ $MYVIMRC,
-        \ dotfile_util#normpath('rc' . g:pathsep . 'plugin.vim', 'config'),
-        \ dotfile_util#normpath('rc' . g:pathsep . 'plugin.define.toml', 'config'),
+        \ g:util#normpath('rc' . g:pathsep . 'plugin.vim', 'config'),
+        \ g:util#normpath('rc' . g:pathsep . 'plugin.define.toml', 'config'),
         \ )
     " manage completion plugins
     if g:is_neovim && has("python3")
@@ -56,14 +56,14 @@ function! s:configure_neobundle() abort
     endif
 
     " other plugins
-    call neobundle#load_toml(dotfile_util#normpath('rc' . g:pathsep . 'plugin.define.toml', 'config'), { })
+    call g:neobundle#load_toml(g:util#normpath('rc' . g:pathsep . 'plugin.define.toml', 'config'), { })
 
     NeoBundleSaveCache
   endif
 
-  call dotfile_util#source(dotfile_util#normpath('rc' . g:pathsep . 'plugin.config.vim', 'config'))
+  call g:util#source(g:util#normpath('rc' . g:pathsep . 'plugin.config.vim', 'config'))
 
-  call neobundle#end()
+  call g:neobundle#end()
 
   filetype plugin indent on
   syntax on

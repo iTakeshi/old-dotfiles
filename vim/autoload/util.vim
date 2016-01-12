@@ -20,37 +20,36 @@ else
 end
 
 if g:is_windows
-  function! dotfile_util#is_abspath(path) abort
+  function! g:util#is_abspath(path) abort
     return a:path =~# '\v^[A-Z]:\\'
   endfunction
 else
-  function! dotfile_util#is_abspath(path) abort
+  function! g:util#is_abspath(path) abort
     return a:path =~# '\v^/'
   endfunction
 endif
 
-function! dotfile_util#is_relpath(path) abort
-  return !dotfile_util#is_abspath(a:path)
+function! g:util#is_relpath(path) abort
+  return !g:util#is_abspath(a:path)
 endfunction
 
-function! dotfile_util#normpath(path, type) abort
-  let relpath = dotfile_util#is_relpath(a:path)
+function! g:util#normpath(path, type) abort
+  let l:relpath = g:util#is_relpath(a:path)
         \ ? a:path
         \ : fnamemodify(a:path, ':~:.')
-  if a:type =~ 'c\%[onfig]'
-    let typeroot = g:config_root
-  elseif a:type =~ 'd\%[ata]'
-    let typeroot = g:data_root
+  if a:type =~# 'c\%[onfig]'
+    let l:typeroot = g:config_root
+  elseif a:type =~# 'd\%[ata]'
+    let l:typeroot = g:data_root
   endif
-  return typeroot . g:pathsep . relpath
+  return l:typeroot . g:pathsep . l:relpath
 endfunction
 
-function! dotfile_util#source(path) abort
-  let path = expand(a:path)
-  if filereadable(path)
-    execute printf('source %s', path)
+function! g:util#source(path) abort
+  let l:path = expand(a:path)
+  if filereadable(l:path)
+    execute printf('source %s', l:path)
     return 1
   endif
   return 0
 endfunction
-

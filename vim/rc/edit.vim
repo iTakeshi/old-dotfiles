@@ -22,7 +22,7 @@ set autoread          " automatically read the changed contents
 set viewoptions=cursor,folds,slash,unix
 
 " change default view directory
-let &viewdir = dotfile_util#normpath('view', 'data')
+let &viewdir = g:util#normpath('view', 'data')
 if !isdirectory(&viewdir)
   call mkdir(&viewdir, 'p', 0700)
 endif
@@ -32,7 +32,7 @@ set clipboard=unnamedplus
 
 " keep undo history on undofile
 if has('persistent_undo')
-  let &undodir = dotfile_util#normpath('undo', 'data')
+  let &undodir = g:util#normpath('undo', 'data')
   if !isdirectory(&undodir)
     call mkdir(&undodir, 'p', 0700)
   endif

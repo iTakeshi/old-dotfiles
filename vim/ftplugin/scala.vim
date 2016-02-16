@@ -1,12 +1,12 @@
-setl tabstop=4
-setl softtabstop=4
-setl shiftwidth=4
+setl tabstop=2
+setl softtabstop=2
+setl shiftwidth=2
 setl smarttab
 setl expandtab
 setl autoindent
 setl smartindent
 setl cindent
-setl colorcolumn=80
+setl colorcolumn=100
 
 setl foldmethod=indent
 setl foldlevel=99

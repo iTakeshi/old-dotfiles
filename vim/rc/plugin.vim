@@ -1,12 +1,8 @@
-let s:bundle_root    = g:util#normpath('bundle', 'config')
-let s:neobundle_root = s:bundle_root . g:pathsep . 'neobundle.vim'
-let s:unite_root     = s:bundle_root . g:pathsep . 'unite.vim'
-let s:vimproc_root   = s:bundle_root . g:pathsep . 'vimproc.vim'
-let s:neobundle_url  = 'https://github.com/Shougo/neobundle.vim'
-let s:unite_url      = 'https://github.com/Shougo/unite.vim'
-let s:vimproc_url    = 'https://github.com/Shougo/vimproc.vim'
+let s:bundle_root = expand('~/.cache/dein')
+let s:dein_root   = s:bundle_root . g:pathsep . 'dein.vim'
+let s:dein_url    = 'https://github.com/Shougo/dein.vim'
 
-function! s:install_neobundle() abort
+function! s:install_dein() abort
   if !executable('git')
     echohl Error
     echo 'git is required to be installed.'
@@ -25,62 +21,52 @@ function! s:install_neobundle() abort
     let l:vimproc_build_cmd = 'make'
   endif
 
-  redraw | echo 'Installing neobundle.vim, unite.vim, and vimproc.vim ...'
-  call system(printf('git clone --depth 1 %s %s', s:neobundle_url, s:neobundle_root))
-  call system(printf('git clone --depth 1 %s %s', s:unite_url,     s:unite_root))
-  call system(printf('git clone --depth 1 %s %s', s:vimproc_url,   s:vimproc_root))
+  redraw | echo 'Installing dein.vim ...'
+  call system(printf('git clone --depth 1 %s %s', s:dein_url, s:dein_root))
   let l:currentdir = system('pwd')
-  execute(printf('cd %s', s:vimproc_root))
-  echo system('pwd')
-  call system(l:vimproc_build_cmd)
-  execute(printf('cd %s', l:currentdir))
-  redraw | echo 'neobundle.vim, unite.vim, and vimproc.vim were installed. continue to install other plugins...'
+  redraw | echo 'dein.vim was installed. continue to install other plugins...'
   return 0
 endfunction
 
-function! s:configure_neobundle() abort
-  call g:neobundle#begin(s:bundle_root)
+function! s:configure_dein() abort
+  call g:dein#begin(s:bundle_root)
+  let g:dein#types#git#clone_depth = 1
 
-  if g:neobundle#load_cache(
-        \ $MYVIMRC,
+  if g:dein#load_cache([
         \ g:util#normpath('rc' . g:pathsep . 'plugin.vim', 'config'),
-        \ g:util#normpath('rc' . g:pathsep . 'plugin.define.toml', 'config'),
-        \ )
-    " manage completion plugins
-    if g:is_neovim && has("python3")
-      NeoBundle 'Shougo/deoplete.nvim'
-    elseif has('lua') && ( (v:version == 703 && has('patch885')) || v:version >= 704 )
-      NeoBundle 'Shougo/neocomplete.vim'
-    else
-      NeoBundle 'Shougo/neocomplecache.vim'
-    endif
+        \ g:util#normpath('rc' . g:pathsep . 'plugin.define.vim', 'config'),
+        \ ])
 
-    " other plugins
-    call g:neobundle#load_toml(g:util#normpath('rc' . g:pathsep . 'plugin.define.toml', 'config'), { })
+    call g:util#source(g:util#normpath('rc' . g:pathsep . 'plugin.define.vim', 'config'))
 
-    NeoBundleSaveCache
+    call g:dein#save_cache()
   endif
 
   call g:util#source(g:util#normpath('rc' . g:pathsep . 'plugin.config.vim', 'config'))
 
-  call g:neobundle#end()
+  call g:dein#end()
 
   filetype plugin indent on
   syntax on
 
-  NeoBundleCheck
+  if g:dein#check_install()
+    call g:dein#install()
+    call g:dein#remote_plugins()
+    call g:dein#check_lazy_plugins()
+    call g:dein#recache_runtimepath()
+  endif
 
   if !has('vim_starting')
-    call neobundle#call_hook('on_source')
+    call dein#call_hook('on_source')
   endif
 endfunction
 
-if !filereadable(s:neobundle_root . g:pathsep . 'plugin' . g:pathsep . 'neobundle.vim')
-  call s:install_neobundle()
+if !filereadable(s:dein_root . g:pathsep . 'autoload' . g:pathsep . 'dein.vim')
+  call s:install_dein()
 endif
 
 if has('vim_starting')
-  execute printf('set runtimepath+=%s', s:neobundle_root)
+  execute printf('set runtimepath+=%s', s:dein_root)
 endif
-call s:configure_neobundle()
+call s:configure_dein()
 

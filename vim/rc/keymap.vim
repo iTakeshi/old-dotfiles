@@ -1,14 +1,70 @@
-" define <Leader> and <LocalLeader>
-let g:mapleader = ';'
-let g:maplocalleader = ';'
+" normal mode {{{
+nnoremap <C-@> <Nop>
+nnoremap <C-a> <C-a>
+nnoremap <C-b> <C-b>
+nnoremap <C-c> <C-c>
+nnoremap <C-d> <C-l>
+nnoremap <C-e> 5<C-e>
+nnoremap <C-f> <C-f>
+nnoremap <C-g> <Nop>
+nnoremap <C-h> <C-w>h
+nnoremap <C-i> <Nop>
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-m> <Nop>
+nnoremap <C-n> <C-w>n
+nnoremap <C-o> <C-w>v
+nnoremap <C-p> "0p
+nnoremap <C-q> <Nop>
+nnoremap <C-r> <C-r>
+nnoremap <C-s> :<C-u>w<CR>
+nnoremap <C-t> <Nop>
+nnoremap <C-u> <Nop>
+nnoremap <C-v> <C-v>
+nnoremap <C-w> <C-w>
+nnoremap <C-x> <C-x>
+nnoremap <C-y> 5<C-y>
+nnoremap <C-z> <C-z>
 
-" remove any existing keymap for leader and localleader
-nnoremap ; <Nop>
-xnoremap ; <Nop>
+nnoremap <S-Left>  <C-w><
+nnoremap <S-Right> <C-w>>
+nnoremap <S-Up>    <C-w>-
+nnoremap <S-Down>  <C-w>+
+" }}}
 
-" move macro to Q and disable default q
-nnoremap Q q
-nnoremap q <Nop>
+" insert mode {{{
+inoremap <C-@> <Nop>
+inoremap <C-a> <C-o>^
+inoremap <C-b> <C-o>b
+inoremap <C-c> <Esc>
+inoremap <C-d> <C-o>x
+inoremap <C-e> <C-o>$
+inoremap <C-f> <C-o>w
+inoremap <C-g> <C-g>
+inoremap <C-h> <C-o>h
+inoremap <C-i> <Tab>
+inoremap <C-j> <C-o>gj
+inoremap <C-k> <C-o>gk
+inoremap <C-l> <C-o>l
+inoremap <C-m> <CR>
+inoremap <C-n> <C-n>
+inoremap <C-o> <C-o>
+inoremap <C-p> <C-o>p
+inoremap <C-q> <Nop>
+inoremap <C-r> <C-r>
+inoremap <C-s> <C-o>:w<CR>
+inoremap <C-t> <Nop>
+inoremap <C-u> <C-u>
+inoremap <C-v> <Esc>o
+inoremap <C-w> <C-w>
+inoremap <C-x> <Nop>
+inoremap <C-y> <Nop>
+inoremap <C-z> <Nop>
+" }}}
+
+" select whole line by vv like yy and dd
+nnoremap vv 0v$
 
 " remap j and k to act as expected when used on long, wrapped, lines
 nnoremap j gj
@@ -16,57 +72,30 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-" increase scrolling speed
-nnoremap <C-e> 5<C-e>
-nnoremap <C-y> 5<C-y>
-
-" Emacs like binding in Insert mode
-inoremap <C-a> <C-o>^
-inoremap <C-e> <C-o>$
-inoremap <C-f> <C-o>w
-inoremap <C-b> <C-o>b
-inoremap <C-d> <C-o>x
-
-" Ctrl-h/j/k/l to move around in Insert mode
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
-inoremap <C-l> <C-o>l
+" move macro to Q and disable default q
+nnoremap Q q
+nnoremap q <Nop>
 
 " Y to yank until the end of line
 nnoremap Y y$
 
-" <C-p> to paste from 0 register
-nnoremap <C-p> "0p
+" define <Leader> and <LocalLeader>
+let g:mapleader = "\<Space>"
+let g:maplocalleader = "\<Space>"
 
-" paste in insert mode
-inoremap <C-S-p> <C-o>p
-
-" vv to select the line, like yy, dd
-nnoremap vv 0v$
-
-" window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <S-Left>  <C-w><
-nnoremap <S-Right> <C-w>>
-nnoremap <S-Up>    <C-w>-
-nnoremap <S-Down>  <C-w>+
-
-" redraw window
-nnoremap <C-d> :<C-u>redraw!<CR>
+" remove any existing keymap for leader and localleader
+nnoremap <space> <Nop>
+xnoremap <space> <Nop>
 
 " toggle
-nnoremap [toggle] <Nop>
-nmap T [toggle]
-nnoremap <silent> [toggle]s :<C-u>setl spell!<CR>:setl spell?<CR>
-nnoremap <silent> [toggle]l :<C-u>setl list!<CR>:setl list?<CR>
-nnoremap <silent> [toggle]e :<C-u>setl expandtab!<CR>:setl expandtab?<CR>
-nnoremap <silent> [toggle]w :<C-u>setl wrap!<CR>:setl wrap?<CR>
-nnoremap <silent> [toggle]p :<C-u>setl paste!<CR>:setl paste?<CR>
-nnoremap <silent> [toggle]q :<C-u>copen<CR>
+nnoremap <Plug>(my-toggle) <Nop>
+nmap T <Plug>(my-toggle)
+nnoremap <silent> <Plug>(my-toggle)s :<C-u>setl spell!<CR>:setl spell?<CR>
+nnoremap <silent> <Plug>(my-toggle)l :<C-u>setl list!<CR>:setl list?<CR>
+nnoremap <silent> <Plug>(my-toggle)e :<C-u>setl expandtab!<CR>:setl expandtab?<CR>
+nnoremap <silent> <Plug>(my-toggle)w :<C-u>setl wrap!<CR>:setl wrap?<CR>
+nnoremap <silent> <Plug>(my-toggle)p :<C-u>setl paste!<CR>:setl paste?<CR>
+nnoremap <silent> <Plug>(my-toggle)q :<C-u>copen<CR>
 
 " tag navigation
 nnoremap [t  :<C-u>tprevious<CR>
@@ -90,15 +119,7 @@ nnoremap ]f  :<C-u>next<CR>
 nnoremap g[f :<C-u>first<CR>
 nnoremap g]f :<C-u>last<CR>
 
-" tab operation (make similar mapping with window operation)
-" ref.
-" <C-w>n    Create a new window and start editing an empty file in it.
-" <C-w>q    Quit the current window. (:quit)
-" <C-w>c    Close the current window. (:close)
-" <C-w>o    Only
-" <C-w>w    Move to below/right
-" <C-w>W    Move to top/left
-" <C-w>p    Move to previous
+" tab operation {{{
 function! s:tab_quit() abort
   if tabpagenr('$') == 1
     quit
@@ -129,39 +150,33 @@ nnoremap <silent> <Plug>(my-tab-8) :<C-u>tabnext8<CR>
 nnoremap <silent> <Plug>(my-tab-9) :<C-u>tabnext9<CR>
 nnoremap <silent> <Plug>(my-tab-$) :<C-u>tablast<CR>
 
-nmap <C-t>n     <Plug>(my-tab-new)
-nmap <C-t><C-n> <Plug>(my-tab-new)
-nmap <C-t>q     <Plug>(my-tab-quit)
-nmap <C-t><C-q> <Plug>(my-tab-quit)
-nmap <C-t>c     <Plug>(my-tab-close)
-nmap <C-t>o     <Plug>(my-tab-only)
-nmap <C-t><C-o> <Plug>(my-tab-only)
+nnoremap <Plug>(my-tab) <Nop>
+nmap <Leader>t <Plug>(my-tab)
 
-nmap <C-t>t     <Plug>(my-tab-next)
-nmap <C-t><C-t> <Plug>(my-tab-next)
-nmap <C-t>l     <Plug>(my-tab-next)
-nmap <C-t><C-l> <Plug>(my-tab-next)
-nmap <C-t>T     <Plug>(my-tab-prev)
-nmap <C-t>h     <Plug>(my-tab-prev)
-nmap <C-t><C-h> <Plug>(my-tab-prev)
-nmap <C-t>j     <Plug>(my-tab-$)
-nmap <C-t><C-j> <Plug>(my-tab-$)
-nmap <C-t>k     <Plug>(my-tab-0)
-nmap <C-t><C-k> <Plug>(my-tab-0)
+nmap <Plug>(my-tab)n <Plug>(my-tab-new)
+nmap <Plug>(my-tab)q <Plug>(my-tab-quit)
+nmap <Plug>(my-tab)c <Plug>(my-tab-close)
+nmap <Plug>(my-tab)o <Plug>(my-tab-only)
 
-nmap <C-t>L     <Plug>(my-tab-move-R)
-nmap <C-t>H     <Plug>(my-tab-move-L)
-nmap <C-t>J     <Plug>(my-tab-move-$)
-nmap <C-t>K     <Plug>(my-tab-move-0)
+nmap <Plug>(my-tab)l <Plug>(my-tab-next)
+nmap <Plug>(my-tab)h <Plug>(my-tab-prev)
+nmap <Plug>(my-tab)j <Plug>(my-tab-$)
+nmap <Plug>(my-tab)k <Plug>(my-tab-0)
 
-nmap <C-t>0 <Plug>(my-tab-0)
-nmap <C-t>1 <Plug>(my-tab-1)
-nmap <C-t>2 <Plug>(my-tab-2)
-nmap <C-t>3 <Plug>(my-tab-3)
-nmap <C-t>4 <Plug>(my-tab-4)
-nmap <C-t>5 <Plug>(my-tab-5)
-nmap <C-t>6 <Plug>(my-tab-6)
-nmap <C-t>7 <Plug>(my-tab-7)
-nmap <C-t>8 <Plug>(my-tab-8)
-nmap <C-t>9 <Plug>(my-tab-9)
-nmap <C-t>$ <Plug>(my-tab-$)
+nmap <Plug>(my-tab)L <Plug>(my-tab-move-R)
+nmap <Plug>(my-tab)H <Plug>(my-tab-move-L)
+nmap <Plug>(my-tab)J <Plug>(my-tab-move-$)
+nmap <Plug>(my-tab)K <Plug>(my-tab-move-0)
+
+nmap <Plug>(my-tab)0 <Plug>(my-tab-0)
+nmap <Plug>(my-tab)1 <Plug>(my-tab-1)
+nmap <Plug>(my-tab)2 <Plug>(my-tab-2)
+nmap <Plug>(my-tab)3 <Plug>(my-tab-3)
+nmap <Plug>(my-tab)4 <Plug>(my-tab-4)
+nmap <Plug>(my-tab)5 <Plug>(my-tab-5)
+nmap <Plug>(my-tab)6 <Plug>(my-tab-6)
+nmap <Plug>(my-tab)7 <Plug>(my-tab-7)
+nmap <Plug>(my-tab)8 <Plug>(my-tab-8)
+nmap <Plug>(my-tab)9 <Plug>(my-tab-9)
+nmap <Plug>(my-tab)$ <Plug>(my-tab-$)
+" }}}

@@ -1,4 +1,4 @@
-" save the file as root with 'sudo"
+" save the file as root with 'sudo'
 cabbr w!! w !sudo tee > /dev/null %
 
 " automatically create missing directories
@@ -61,18 +61,18 @@ function! s:remove_trailing_whitespace() abort
     endif
   endfor
 
-  let cursor_position = getpos(".")
+  let cursor_position = getpos('.')
   %s/\s\+$//e
   call setpos('.', cursor_position)
 
   return 0
 endfunction
-autocmd InsertLeave * call s:remove_trailing_whitespace()
+autocmd MyAutoCmd InsertLeave * call s:remove_trailing_whitespace()
 
 " edit vimrc
 if has('vim_starting')
   function s:edit_vimrc() abort
-    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1 && expand("%") == ""
+    if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1 && expand('%') ==# ''
       edit $MYVIMRC
     else
       vsplit
@@ -91,3 +91,6 @@ if has('vim_starting')
   endfunction
 endif
 nnoremap <F4> :<C-u>call <SID>reload_vimrc()<CR>
+
+" open help in vertically split window
+autocmd MyAutoCmd FileType help wincmd L

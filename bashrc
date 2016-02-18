@@ -152,3 +152,5 @@ fi
 
 # added by Anaconda3 2.4.1 installer
 export PATH="/home/itakeshi/anaconda3/bin:$PATH"
+
+export PATH="/home/itakeshi/.activator:$PATH"

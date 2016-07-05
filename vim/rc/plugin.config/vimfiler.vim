@@ -1,6 +1,7 @@
 if g:dein#tap('vimfiler.vim')
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_enable_auto_cd = 1
+  let g:vimfiler_ignore_pattern = ['^\.$', '^\.\.$']
 
   " vimfiler specific key mappings
   autocmd MyAutoCmd FileType vimfiler call s:vimfiler_settings()
@@ -26,7 +27,6 @@ if g:dein#tap('vimfiler.vim')
           \ })
     VimFiler
     setl nonumber
-    execute('normal .')
   endfunction
 
   function! s:exec_vimfiler_on_vimenter()

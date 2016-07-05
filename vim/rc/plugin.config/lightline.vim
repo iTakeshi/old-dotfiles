@@ -25,7 +25,7 @@ if g:dein#tap('lightline.vim')
         \     ['tabs'],
         \   ],
         \   'right': [
-        \     ['gita_debug', 'gita_branch', 'gita_traffic', 'gita_status'],
+        \     ['gita_branch', 'gita_traffic', 'gita_status'],
         \   ]
         \ },
         \ 'component_function': {
@@ -36,7 +36,6 @@ if g:dein#tap('lightline.vim')
         \   'fileencoding': 'g:lightline.my.fileencoding',
         \   'filetype':     'g:lightline.my.filetype',
         \   'lineinfo':     'g:lightline.my.lineinfo',
-        \   'gita_debug':   'g:lightline.my.gita_debug',
         \   'gita_branch':  'g:lightline.my.gita_branch',
         \   'gita_traffic': 'g:lightline.my.gita_traffic',
         \   'gita_status':  'g:lightline.my.gita_status',
@@ -121,9 +120,6 @@ if g:dein#tap('lightline.vim')
   endfunction
 
   if dein#tap('vim-gita') && executable('git')
-    function! g:lightline.my.gita_debug() abort
-      return g:gita#statusline#debug()
-    endfunction
     function! g:lightline.my.gita_branch() abort
       return g:gita#statusline#preset('branch_fancy')
     endfunction
@@ -134,9 +130,6 @@ if g:dein#tap('lightline.vim')
       return g:gita#statusline#preset('status')
     endfunction
   else
-    function! g:lightline.my.gita_debug() abort
-      return ''
-    endfunction
     function! g:lightline.my.gita_branch() abort
       return ''
     endfunction

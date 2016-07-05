@@ -29,22 +29,18 @@ function! s:install_dein() abort
 endfunction
 
 function! s:configure_dein() abort
-  call g:dein#begin(s:bundle_root)
-  let g:dein#types#git#clone_depth = 1
-
-  if g:dein#load_cache([
+  if g:dein#load_state(s:bundle_root)
+    call g:dein#begin(s:bundle_root, [
         \ g:util#normpath('rc' . g:pathsep . 'plugin.vim', 'config'),
         \ g:util#normpath('rc' . g:pathsep . 'plugin.define.vim', 'config'),
         \ ])
-
+    let g:dein#types#git#clone_depth = 1
     call g:util#source(g:util#normpath('rc' . g:pathsep . 'plugin.define.vim', 'config'))
-
-    call g:dein#save_cache()
+    call g:dein#end()
+    call g:dein#save_state()
   endif
 
   call g:util#source(g:util#normpath('rc' . g:pathsep . 'plugin.config.vim', 'config'))
-
-  call g:dein#end()
 
   filetype plugin indent on
   syntax on

@@ -7,8 +7,8 @@ Complete these 2 steps BEFORE you run this script.
   1. configure SSH connection to GitHub
 
   2. execute following commands
-    $ sudo apt-get update
-    $ sudo apt-get dist-upgrade
+    $ sudo apt update
+    $ sudo apt dist-upgrade
     $ sudo reboot
 
 Did you confirm? [Y/n]
@@ -21,7 +21,7 @@ case $CONFIRMATION in
 esac
 
 # install fundamental tools
-sudo apt-get -y install \
+sudo apt -y install \
   build-essential curl autoconf automake lv python-software-properties sqlite3 \
   exuberant-ctags global compizconfig-settings-manager compiz-plugins-extra \
   python3 python-pip python3-pip clang $(check-language-support) \
@@ -37,15 +37,13 @@ im-config -n fcitx
 
 # install 3rd-party softwares {{{
 sudo sed -i -e "s/^# \(.* partner\)$/\1/g" /etc/apt/sources.list
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 sudo add-apt-repository "deb http://linux.dropbox.com/ubuntu $(lsb_release -sc) main"
 sudo apt-add-repository -y ppa:git-core/ppa
 sudo add-apt-repository -y ppa:webupd8team/java
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-sudo apt-get update
-sudo apt-get -y install \
+sudo apt update
+sudo apt -y install \
   google-chrome-stable git-core oracle-java8-installer \
   nodejs dropbox python-gpgme libappindicator1
 # }}}
@@ -107,11 +105,11 @@ sudo dpkg -i scala-2.11.8.deb
 rm scala-2.11.8.deb
 echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 642AC823
-sudo apt-get update
-sudo apt-get install sbt
+sudo apt update
+sudo apt install sbt
 
 # other utility softwares
-sudo apt-get -y install asunder banshee gimp inkscape rar
+sudo apt -y install asunder banshee gimp inkscape rar
 
 # Use CapsLock key as extra Ctrl
 dconf write /org/gnome/desktop/input-sources/xkb-options "['ctrl:nocaps']"

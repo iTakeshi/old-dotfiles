@@ -119,6 +119,7 @@ fi
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+export EDITOR="$HOME/usr/bin/vim"
 
 PS1='\[\033[01;33m\]\u@\h\[\033[01;31m\] \w$(__git_ps1) \$\[\033[00m\] '
 
@@ -140,17 +141,4 @@ man() {
     man "$@"
 }
 
-# added by Anaconda 2.3.0 installer
-export PATH="/home/itakeshi/anaconda/bin:$PATH"
-
-export XDG_CONFIG_HOME="$HOME/.config"
-
-if type nvim >/dev/null 2>&1;
-then
-    alias vimdiff='nvim -d'
-fi
-
-# added by Anaconda3 2.4.1 installer
-export PATH="/home/itakeshi/anaconda3/bin:$PATH"
-
-export PATH="/home/itakeshi/.activator:$PATH"
+export PATH="/home/itakeshi/usr/bin:$PATH"

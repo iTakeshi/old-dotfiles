@@ -29,7 +29,7 @@ sudo apt-get -y install \
   libffi-dev libgdbm-dev libreadline-dev libncurses-dev libyaml-dev \
   libcurl4-openssl-dev zlib1g-dev libssl-dev libxml2-dev libxslt-dev sqlite3 \
   libsqlite3-dev libx11-dev libxtst-dev libxt-dev libsm-dev libxpm-dev \
-  mysql-server mysql-client
+  mysql-server mysql-client nfs-common
 sudo pip install pygments mycli
 
 # use fcitx

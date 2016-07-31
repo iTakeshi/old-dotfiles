@@ -1,0 +1,14 @@
+// http://askubuntu.com/questions/501659/how-to-swap-command-and-control-keys-with-xkb-step-by-step
+// HHKB layout for xkb, written by Jongmin Kim (kdzlvaids@gmail.com)
+
+partial modifier_keys
+xkb_symbols "hhkb_layout"
+{
+    // Swap Backspace and Backslash
+    key <BKSP> { [ backslash, bar ] };
+    key <BKSL> { [ BackSpace, BackSpace ] };
+
+    // Disable CAPS and use it as Ctrl
+    replace key <CAPS> { [ Control_L, Control_L ] };
+    modifier_map  Control { <CAPS>, <LCTL> };
+};

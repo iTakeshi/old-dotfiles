@@ -2,3 +2,4 @@
 2. add `custom:hhkb_layout = +custom(hhkb_layout)` in /usr/share/X11/xkb/rules/evdev
 3. add `custom:hhkb_layout Custom layout (HHKB)` in /usr/share/X11/xkb/rules/evdev.lst
 4. run `dconf write /org/gnome/desktop/input-sources/xkb-options "['custom:hhkb_layout']"`
+5. to reset, run `dconf write /org/gnome/desktop/input-sources/xkb-options "['ctrl:nocaps']"`

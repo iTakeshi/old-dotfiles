@@ -9,6 +9,9 @@
   b = branch
   ba = branch -a
   co = checkout
+    fp = fetch --prune
+    ap = add -p
+    ds = diff --staged
 [user]
   name = iTakeshi
   email = takeshi.ito.doraemon@gmail.com

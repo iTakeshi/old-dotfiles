@@ -30,4 +30,6 @@ augroup filetypedetect
   au BufNewFile,BufRead *.jl setf julia
   " Scala
   au BufNewFile,BufRead *.scala setf scala
+  " glsl
+  autocmd! BufNewFile,BufRead *.glsl,*.geom,*.vert,*.frag,*.gsh,*.vsh,*.fsh,*.vs,*.fs,*.gs,*.tcs,*.tes,*.tesc,*.tese,*.comp set filetype=glsl
 augroup END
